@@ -12,8 +12,11 @@ export default function Header() {
         <div className="header-row">
           {/* Logo */}
           <div className="logo">
-            <span className="logo-mark">APJS</span>
-            <span className="logo-sub">ELEGANCE SALON</span>
+            <img 
+              src="public/logo.png"   
+              alt="APJS Elegance Salon Logo" 
+              className="logo-img"
+            />
           </div>
 
           {/* Navigation */}
@@ -21,7 +24,6 @@ export default function Header() {
             <a href="#">SALON</a>
             <a href="#">HAIR EXTENSIONS</a>
             <a href="#">SHOP</a>
-            <a href="#">WEDDINGS</a>
             <a href="#">BLOG</a>
             <a href="#" className="active">CONTACT</a>
             <a href="#" className="pill">BOOK NOW</a>
@@ -32,7 +34,6 @@ export default function Header() {
             <div className="search">
               <input type="text" placeholder="Search" />
             </div>
-            <div className="auth">Log</div>
           </div>
         </div>
       </header>
