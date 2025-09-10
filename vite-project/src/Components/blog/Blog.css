@@ -1,0 +1,81 @@
+.blog {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.blog h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* Blog post styling */
+.blog-post {
+  position: relative;
+  background: #f9f9f9; /* default background for posts without images */
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  height: 250px; /* for posts with background images, adjust as needed */
+  background-size: cover;
+  background-position: center;
+}
+
+/* Content overlay for posts with background images */
+.blog-post .blog-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* dark overlay for readability */
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.blog-post h3 {
+  margin-top: 0;
+  color: #007bff;
+}
+
+.blog-post p {
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Override text color for posts with overlay */
+.blog-post .blog-content h3,
+.blog-post .blog-content p {
+  color: white;
+  margin: 0 0 10px;
+}
+
+.blog-post a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s ease-in-out;
+}
+
+.blog-post a:hover {
+  color: #0056b3;
+}
+
+/* Links inside overlay */
+.blog-post .blog-content a {
+  color: #ffd700;
+}
+
+.blog-post .blog-content a:hover {
+  color: #ffea00;
+  text-decoration: underline;
+}
