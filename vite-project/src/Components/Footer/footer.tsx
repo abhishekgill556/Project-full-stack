@@ -6,8 +6,8 @@ export default function Footer() {
       <div className="footer-row">
         {/* Left: Business Info */}
         <div className="footer-col">
-          <div className="footer-brand">Prep Hair</div>
-          <div className="footer-text">173 Lilac Street, Winnipeg</div>
+          <div className="footer-brand">APJS Elegance Salon</div>
+          <div className="footer-text">666 St. James Street, Winnipeg</div>
           <div className="footer-text">204 500 2212</div>
         </div>
 
@@ -22,17 +22,17 @@ export default function Footer() {
 
         {/* Socials */}
         <div className="footer-col">
-          <div>@prephair</div>
-          <div>@preptulum</div>
-          <div>@prepweddings</div>
-          <a href="#">TikTok</a>
-          <a href="#">Pinterest</a>
+          <div>@APJSbeauty</div>
+          <div>@APJSsalon</div>
+          <div>@APJSweddings</div>
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
         </div>
 
         </div>
 
       {/* Bottom Row */}
-      <div className="footer-bottom">Prep Hair © 2025</div>
+      <div className="footer-bottom">APJS Elegance Salon © 2025</div>
     </footer>
   );
 }
