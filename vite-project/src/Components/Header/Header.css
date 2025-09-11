@@ -51,11 +51,6 @@ body {
 .nav a.active {
   color: gray;
 }
-.nav a.pill {
-  border: 1px solid #222;
-  padding: 4px 10px;
-  border-radius: 20px;
-}
 
 /* Right side */
 .right {
