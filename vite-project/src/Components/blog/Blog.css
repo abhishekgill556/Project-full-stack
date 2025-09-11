@@ -1,61 +1,65 @@
 .blog {
-  max-width: 800px;
-  margin: 50px auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
+  padding: 60px 20px;
+  text-align: center;
+  background-color: #fff;
 }
 
 .blog h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  color: #333;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #000;
 }
 
-/* Blog post container with background image */
 .blog-post {
   position: relative;
   background-size: cover;
-  background-position: top center; /* adjust to show faces */
-  background-repeat: no-repeat;
+  background-position: center;
   border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 20px;
-  color: white;
-  min-height: 250px; /* fixed height for consistent look */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  display: flex;
-  align-items: flex-end; /* text at bottom */
+  border: 1px solid #ccc; /* light grey border */
+  padding: 40px 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  text-align: left;
   overflow: hidden;
+  background-color: #fff;
+  color: #000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05); /* subtle shadow for depth */
 }
 
-/* Overlay for text readability */
+.blog-post::before {
+  display: none;
+}
+
 .blog-content {
-  background-color: rgba(0, 0, 0, 0.5); /* translucent black */
-  padding: 15px 20px;
-  border-radius: 10px;
-  width: 100%;
-  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+  color: #000;
 }
 
-/* Headings and text */
-.blog-content h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.7rem;
-  font-weight: bold;
+.blog-post h3 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: #000;
 }
 
-.blog-content p {
-  margin: 0 0 12px 0;
-  line-height: 1.4;
+.blog-post p {
   font-size: 1rem;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  color: #333;
 }
 
-.blog-content a {
-  color: #aad4ff;
-  font-weight: bold;
+.blog-post a {
+  display: inline-block;
   text-decoration: underline;
+  font-weight: bold;
+  color: #000;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  transition: color 0.3s ease;
 }
 
-.blog-content a:hover {
-  color: #d0e8ff;
+.blog-post a:hover {
+  color: #666;
 }
