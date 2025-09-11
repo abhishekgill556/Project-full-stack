@@ -26,7 +26,6 @@ export default function Header() {
             <a href="#">SHOP</a>
             <a href="#">BLOG</a>
             <a href="#" className="active">CONTACT</a>
-            <a href="#" className="pill">BOOK NOW</a>
           </nav>
 
           {/* Right side */}
