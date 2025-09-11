@@ -1,16 +1,16 @@
 import './App.css'
-import Header from "./Components/Header/Header"
 import Blog from './Components/blog/Blog'
 import Footer from './Components/Footer/footer'
-import Booking from './Components/book/book'
+import Book from './Components/book/book'
+import Header from './Components/Header/Header'
 function App() {
  
  
   return (
     <>
       <div>
-         <Header/>
-        <Booking/>
+        <Header/>
+        <Book/>
         <Blog/>
         <Footer/> 
 
