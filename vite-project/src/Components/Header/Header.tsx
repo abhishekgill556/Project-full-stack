@@ -3,14 +3,13 @@ import "./Header.css";
 export default function Header() {
   return (
     <>
-      {/* Announcement bar */}
+
       <div className="announce">
         When Style meets Elegance, beauty becomes timeless!
       </div>
 
       <header className="site-header">
         <div className="header-row">
-          {/* Logo */}
           <div className="logo">
             <img 
               src="public/logo.png"   
@@ -18,8 +17,6 @@ export default function Header() {
               className="logo-img"
             />
           </div>
-
-          {/* Navigation */}
           <nav className="nav">
             <a href="#">SALON</a>
             <a href="#">HAIR EXTENSIONS</a>
@@ -27,8 +24,6 @@ export default function Header() {
             <a href="#">BLOG</a>
             <a href="#" className="active">CONTACT</a>
           </nav>
-
-          {/* Right side */}
           <div className="right">
             <div className="search">
               <input type="text" placeholder="Search" />
