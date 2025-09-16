@@ -2,8 +2,6 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
-
-/* Announcement bar */
 .announce {
   background: #333;
   color: white;
@@ -11,21 +9,16 @@ body {
   padding: 8px;
   font-size: 14px;
 }
-
-/* Header */
 .site-header {
   background: #f2f2f2;
   border-bottom: 1px solid #ccc;
 }
-
 .header-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 12px 24px;
 }
-
-/* Logo */
 .logo {
   font-weight: bold;
   display: flex;
@@ -39,7 +32,6 @@ body {
   letter-spacing: 2px;
 }
 
-/* Navigation */
 .nav {
   display: flex;
   gap: 16px;
@@ -52,7 +44,6 @@ body {
   color: gray;
 }
 
-/* Right side */
 .right {
   display: flex;
   align-items: center;
