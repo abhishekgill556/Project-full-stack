@@ -1,0 +1,42 @@
+.stylist {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.stylist-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.stylist-block {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.stylist-block h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  text-transform: capitalize; /* so "haircut" → "Haircut" */
+}
+
+.stylist-block ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.stylist-block li {
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.level {
+  font-weight: 500;
+}
+
+.price {
+  font-weight: bold;
+}
