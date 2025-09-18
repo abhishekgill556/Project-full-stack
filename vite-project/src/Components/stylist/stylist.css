@@ -19,7 +19,7 @@
 .stylist-block h3 {
   font-size: 18px;
   margin-bottom: 10px;
-  text-transform: capitalize; /* so "haircut" → "Haircut" */
+  text-transform: capitalize; 
 }
 
 .stylist-block ul {
