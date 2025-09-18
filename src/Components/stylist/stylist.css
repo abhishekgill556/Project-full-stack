@@ -1,25 +1,26 @@
 .stylist {
-  padding: 20px;
-  font-family: Arial, sans-serif;
+  padding: 40px 20px;
 }
 
 .stylist-title {
   font-size: 24px;
-  margin-bottom: 20px;
   font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .stylist-block {
-  margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  background: #fff;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .stylist-block h3 {
   font-size: 18px;
-  margin-bottom: 10px;
-  text-transform: capitalize; 
+  text-transform: capitalize;
 }
 
 .stylist-block ul {
@@ -29,8 +30,8 @@
 }
 
 .stylist-block li {
-  margin-bottom: 6px;
   font-size: 14px;
+  margin-bottom: 6px;
 }
 
 .level {

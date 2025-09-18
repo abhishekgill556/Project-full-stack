@@ -1,52 +1,48 @@
 .booking {
-  max-width: 400px;
-  margin: 40px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #000;
   border-radius: 10px;
-  background: #f9f9f9;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
+  background: #fff;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 400px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
- 
+
 .booking h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #333;
 }
- 
+
 .booking form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
- 
+
 .booking input,
 .booking select {
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #000;
   border-radius: 6px;
   font-size: 14px;
   outline: none;
-  transition: border 0.2s ease-in-out;
 }
- 
+
 .booking input:focus,
 .booking select:focus {
-  border-color: #080808;
+  border-color: #666;
 }
- 
+
 .booking button {
   padding: 12px;
-  background: #050505;
+  background: #000;
   border: none;
   border-radius: 6px;
-  color: white;
+  color: #fff;
   font-size: 15px;
   cursor: pointer;
-  transition: background 0.2s ease-in-out;
 }
- 
+
 .booking button:hover {
-  background: #0056b3;
+  background: #333;
 }
