@@ -33,12 +33,12 @@
  
 .booking input:focus,
 .booking select:focus {
-  border-color: #007bff;
+  border-color: #080808;
 }
  
 .booking button {
   padding: 12px;
-  background: #007bff;
+  background: #050505;
   border: none;
   border-radius: 6px;
   color: white;

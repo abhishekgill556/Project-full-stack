@@ -32,7 +32,7 @@ export default function Footer() {
         </div>
 
       {/* Bottom Row */}
-      <div className="footer-bottom">APJS Elegance Salon © 2025</div>
+      <div className="footer-bottom">APJS Elegance Salon © 2025 Jasleen, Sapana, Abhisek, Prabhkiran</div>
     </footer>
   );
 }

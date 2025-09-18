@@ -41,7 +41,7 @@ body {
   color: #222;
 }
 .nav a.active {
-  color: gray;
+  color: rgb(8, 8, 8);
 }
 
 .right {
