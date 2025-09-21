@@ -1,5 +1,5 @@
 .booking {
-  border: 1px solid #000;
+  border: 1px solid #A376A2;
   border-radius: 10px;
   background: #fff;
   padding: 20px;
@@ -11,6 +11,7 @@
 .booking h2 {
   text-align: center;
   margin-bottom: 20px;
+  color: #6B3F69;
 }
 
 .booking form {
@@ -22,7 +23,7 @@
 .booking input,
 .booking select {
   padding: 10px;
-  border: 1px solid #000;
+  border: 1px solid #A376A2;
   border-radius: 6px;
   font-size: 14px;
   outline: none;
@@ -30,12 +31,12 @@
 
 .booking input:focus,
 .booking select:focus {
-  border-color: #666;
+  border-color: #8D5F8C;
 }
 
 .booking button {
   padding: 12px;
-  background: #000;
+  background: #6B3F69;
   border: none;
   border-radius: 6px;
   color: #fff;
@@ -44,5 +45,5 @@
 }
 
 .booking button:hover {
-  background: #333;
+  background: #8D5F8C;
 }

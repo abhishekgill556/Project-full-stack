@@ -1,15 +1,17 @@
 .stylist {
   padding: 40px 20px;
+  background: #DDC3C3;
 }
 
 .stylist-title {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
+  color: #6B3F69;
 }
 
 .stylist-block {
-  border: 1px solid #000;
+  border: 1px solid #A376A2;
   border-radius: 10px;
   background: #fff;
   padding: 20px;
@@ -21,6 +23,7 @@
 .stylist-block h3 {
   font-size: 18px;
   text-transform: capitalize;
+  color: #6B3F69;
 }
 
 .stylist-block ul {
@@ -36,8 +39,10 @@
 
 .level {
   font-weight: 500;
+  color: #333;
 }
 
 .price {
   font-weight: bold;
+  color: #6B3F69;
 }
