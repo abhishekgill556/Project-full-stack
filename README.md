@@ -71,15 +71,15 @@ export default tseslint.config([
 // components:
 Header and footer: It was done by Sapna and jasleen and all the non-working functions were added 
 
-blog: this was done by prabhkiran and added its css.
+blog: This was done by prabhkiran and its shows a lsit of blog posts with a title, description and link for more details.
 
-book: this booking an appointment was added by Abhishek and its css and json file also.
+book: This booking an appointment was added by Abhishek and its css and json file also.
 
-Reviews: this was done by Sapana and defining types along with its css, react-typescript and Json to import data.
+Reviews: This was done by Sapana and defining types along with its css, react-typescript and Json to import data.
 
-Services: this was done by jasleen and this component uses json file to import data and data was rendered using typescript and css was also added.
+Services: This was done by jasleen and this component uses json file to import data and data was rendered using typescript and css was also added.
 
-stylist: this component was done by abhishek gill and data is rendered via json file along with its css and react typescript.
+stylist: This component was done by abhishek gill and data is rendered via json file along with its css and react typescript.
 
 ////
 // font and styling:
@@ -87,4 +87,4 @@ Colour palette is done by everyone to make sure everything is organised and well
 
 ////
 // errors and fixes:
-all the issues which were noticed in the inspect was fixed by prabhkiran to make sure all the requirements were fulfilled.
+All the issues which were noticed in the inspect was fixed by prabhkiran to make sure all the requirements were fulfilled.

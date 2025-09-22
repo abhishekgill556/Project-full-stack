@@ -1,16 +1,16 @@
 .reviews {
   padding: 40px 20px;
-  background: #f9f9f9;
+  background: #DDC3C3; 
   color: #222;
 }
- 
+
 .reviews-title {
   font-size: 2rem;
   text-align: center;
   margin-bottom: 24px;
-  color: #111;
+  color: #6B3F69; 
 }
- 
+
 .reviews-list {
   list-style: none;
   padding: 0;
@@ -19,32 +19,32 @@
   gap: 20px;
   max-width: 800px;
 }
- 
+
 .review-card {
   background: #fff;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #A376A2; 
   border-radius: 12px;
   padding: 20px;
 }
- 
+
 .review-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
 }
- 
+
 .review-name {
   font-weight: 600;
   font-size: 1rem;
-  color: #222;
+  color: #6B3F69; 
 }
- 
+
 .review-status {
   font-size: 0.9rem;
-  color: #666;
+  color: #8D5F8C; 
 }
- 
+
 .review-text {
   margin: 0;
   font-size: 1rem;
