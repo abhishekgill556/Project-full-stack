@@ -1,0 +1,66 @@
+.site-footer {
+  background: #DDC3C3;
+  padding: 30px 20px;
+  color: #000;
+  border-top: 1px solid #A376A2;
+}
+
+.footer-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  padding-top: 20px;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-col a {
+  color: #070707;
+}
+
+.footer-brand {
+  font-size: 22px;
+  font-weight: bold;
+  color: #6B3F69;
+}
+
+.footer-text {
+  font-size: 14px;
+  color: #090909;
+}
+
+.footer-search input,
+.footer-subscribe input {
+  border: none;
+  border-bottom: 1px solid #6B3F69;
+  padding: 5px;
+  outline: none;
+  background: transparent;
+}
+
+.footer-subscribe form {
+  display: flex;
+  gap: 8px;
+}
+
+.footer-subscribe button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 14px;
+  color: #8D5F8C;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  border-top: 1px solid #A376A2;
+  padding-top: 10px;
+  font-size: 14px;
+  color: #333;
+}

@@ -1,0 +1,70 @@
+.site-header {
+  background: #DDC3C3; /* soft pink/beige */
+  border-bottom: 1px solid #A376A2;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+}
+
+.logo {
+  font-weight: bold;
+  display: flex;
+  gap: 6px;
+  color: #6B3F69; /* dark purple */
+}
+
+.logo-mark {
+  font-size: 18px;
+}
+
+.logo-sub {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #333;
+}
+
+.nav {
+  display: flex;
+  gap: 16px;
+}
+
+.nav a {
+  color: #000;
+  transition: color 0.3s;
+}
+
+.nav a.active,
+.nav a:hover {
+  color: #6B3F69;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search input {
+  border: none;
+  border-bottom: 1px solid #8D5F8C;
+  padding: 2px 4px;
+  outline: none;
+  background: transparent;
+}
+
+.auth {
+  color: #6B3F69;
+  font-weight: 500;
+}
+
+.announce {
+  background: #6B3F69;
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+  font-size: 14px;
+}
