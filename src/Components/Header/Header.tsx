@@ -1,9 +1,10 @@
+// src/Components/Header/Header.tsx
+import { NavLink } from "react-router-dom";
 import "./Header.css";
 
 export default function Header() {
   return (
     <>
-
       <div className="announce">
         When Style meets Elegance, beauty becomes timeless!
       </div>
@@ -17,13 +18,29 @@ export default function Header() {
               className="logo-img"
             />
           </div>
+
           <nav className="nav">
-            <a href="#">SALON</a>
-            <a href="#">HAIR EXTENSIONS</a>
-            <a href="#">SHOP</a>
-            <a href="#">BLOG</a>
-            <a href="#" className="active">CONTACT</a>
+            <NavLink to="/" className="nav-link">
+              Home
+            </NavLink>
+            <NavLink to="/services" className="nav-link">
+              Services
+            </NavLink>
+            {/* keep placeholders for now */}
+            <NavLink to="#" className="nav-link">
+              Hair Extensions
+            </NavLink>
+            <NavLink to="#" className="nav-link">
+              Shop
+            </NavLink>
+            <NavLink to="#" className="nav-link">
+              Blog
+            </NavLink>
+            <NavLink to="#" className="nav-link">
+              Contact
+            </NavLink>
           </nav>
+
           <div className="right">
             <div className="search">
               <input type="text" placeholder="Search" />
