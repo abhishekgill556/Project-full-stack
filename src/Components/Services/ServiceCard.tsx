@@ -23,7 +23,7 @@ export default function ServiceCard({ service, onRemove, onSave, isSaved }: Prop
       <div className="service-actions">
         {onSave && (
           <button className="btn" onClick={() => onSave(service.id)}>
-            {isSaved ? "Saved ✓" : "Save"}
+            {isSaved ? "Saved" : "Save"}
           </button>
         )}
         {onRemove && (

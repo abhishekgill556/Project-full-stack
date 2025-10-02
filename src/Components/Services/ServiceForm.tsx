@@ -61,7 +61,6 @@ export default function ServiceForm({
       description: draft.description.trim() || undefined,
     });
 
-    // reset fields
     setDraft({ name: "", price: "", duration: "", description: "" });
   };
 
@@ -77,7 +76,7 @@ export default function ServiceForm({
         />
       </div>
 
-      <div className="form-grid">
+      <div>
         <label>
           Name
           <input
@@ -117,7 +116,7 @@ export default function ServiceForm({
           />
         </label>
 
-        <label className="form-col-span">
+        <label>
           Description (optional)
           <textarea
             name="description"
