@@ -1,4 +1,3 @@
-// src/Components/Header/Header.tsx
 import { NavLink } from "react-router-dom";
 import "./Header.css";
 
@@ -26,7 +25,6 @@ export default function Header() {
             <NavLink to="/services" className="nav-link">
               Services
             </NavLink>
-            {/* keep placeholders for now */}
             <NavLink to="#" className="nav-link">
               Hair Extensions
             </NavLink>

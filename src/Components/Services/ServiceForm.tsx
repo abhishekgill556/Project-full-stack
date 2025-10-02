@@ -61,7 +61,7 @@ export default function ServiceForm({
       description: draft.description.trim() || undefined,
     });
 
-    // reset fields
+
     setDraft({ name: "", price: "", duration: "", description: "" });
   };
 
