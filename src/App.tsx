@@ -4,8 +4,8 @@ import Services from './Components/Services/Services'
 import Book from './Components/book/book'
 import Stylist from './Components/stylist/stylist'
 import Blog from './Components/blog/Blog'
-import Reviews from './Components/Reviews/Reviews'
 import Footer from './Components/Footer/footer'
+import ReviewsPage from './Components/Reviews/ReviewsPage'
 
 function App() {
  
@@ -18,7 +18,7 @@ function App() {
         <Book/>
         <Stylist/>
         <Blog/>
-        <Reviews/>
+        <ReviewsPage/>
         <Footer/> 
       </div>
      
