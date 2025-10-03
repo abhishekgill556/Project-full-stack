@@ -1,5 +1,5 @@
 import "./Blog.css";
-import { blogPosts } from "./data/blogData";
+import { blogPosts } from "../../data/blogData";
 
 export default function Blog() {
   return (
