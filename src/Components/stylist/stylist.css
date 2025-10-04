@@ -46,3 +46,115 @@
   font-weight: bold;
   color: #6B3F69;
 }
+
+.stylist-filter-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.stylist-filter-form input {
+  padding: 8px;
+  font-size: 15px;
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  outline: none;
+}
+
+.stylist-filter-form input:focus {
+  border-color: var(--color-darkAccent);
+}
+
+.stylist-filter-form button {
+  padding: 8px 12px;
+  font-size: 15px;
+  background-color: var(--color-link);
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.stylist-filter-form button:hover {
+  background-color: var(--color-darkAccent);
+}
+
+.stylist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.stylist-card {
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.stylist-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+.stylist-card h3 {
+  font-size: 18px;
+  text-transform: capitalize;
+  color: var(--color-heading);
+  margin-bottom: 10px;
+}
+
+.saved-section {
+  margin-top: 30px;
+  padding: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: #fff;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.saved-section h4 {
+  color: var(--color-heading);
+  font-size: 18px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.saved-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.saved-list li {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+}
+
+.saved-list button {
+  padding: 6px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--color-link);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.saved-list button:hover {
+  background-color: var(--color-darkAccent);
+}
+

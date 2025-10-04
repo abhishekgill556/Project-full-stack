@@ -22,19 +22,20 @@ export default function Header() {
             <NavLink to="/" className="nav-link">
               Home
             </NavLink>
+
             <NavLink to="/services" className="nav-link">
               Services
             </NavLink>
-            <NavLink to="#" className="nav-link">
-              Hair Extensions
+
+            <NavLink to="/stylists" className="nav-link">
+              Stylists
             </NavLink>
-            <NavLink to="#" className="nav-link">
-              Shop
-            </NavLink>
+
             <NavLink to="/blog" className="nav-link">
               Blog
             </NavLink>
-            <NavLink to="/Reviews" className="nav-link">
+
+            <NavLink to="/reviews" className="nav-link">
               Reviews
             </NavLink>
           </nav>
