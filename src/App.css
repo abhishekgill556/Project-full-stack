@@ -1,10 +1,11 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+:root {
+  --color-background: #DDC3C3;   
+  --color-heading: #6B3F69;      
+  --color-border: #A376A2;       
+  --color-text: #333333;         
+  --color-link: #8D5F8C;           
+  --color-darkAccent: #4B2C4D;   
 }
-
 
 .logo {
   height: 6em;

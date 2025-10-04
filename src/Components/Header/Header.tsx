@@ -31,7 +31,7 @@ export default function Header() {
             <NavLink to="#" className="nav-link">
               Shop
             </NavLink>
-            <NavLink to="#" className="nav-link">
+            <NavLink to="/blog" className="nav-link">
               Blog
             </NavLink>
             <NavLink to="#" className="nav-link">

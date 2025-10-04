@@ -1,4 +1,4 @@
-import type { BlogPost } from "../Components/blog/type/blogpost";
+import type { BlogPost } from "../types/blogpost";
 
 export const blogPosts: BlogPost[] = [
   {
