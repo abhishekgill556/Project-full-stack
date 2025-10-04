@@ -34,8 +34,8 @@ export default function Header() {
             <NavLink to="/blog" className="nav-link">
               Blog
             </NavLink>
-            <NavLink to="#" className="nav-link">
-              Contact
+            <NavLink to="/Review" className="nav-link">
+              Review 
             </NavLink>
           </nav>
 

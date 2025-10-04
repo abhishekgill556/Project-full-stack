@@ -32,40 +32,48 @@ export default function AddReviewForm({ reviews, setReviews }: Props) {
   }
 
   return (
-    <form onSubmit={onSubmit}>
-      <h3>Add a Review</h3>
+    <form className="review-form" onSubmit={onSubmit}>
+      <h3 className="review-form__title">Add a Review</h3>
 
-      <label>
-        <span>Name</span>
+      <div className="review-form__row">
+        <label className="review-form__label">Name</label>
         <input
+          className="review-form__input"
           value={name}
           onChange={e => setName(e.target.value)}
           placeholder="Your name"
         />
-      </label>
+      </div>
 
-      <label>
-        <span>Status</span>
-        <select value={status} onChange={e => setStatus(e.target.value)}>
+      <div className="review-form__row">
+        <label className="review-form__label">Status</label>
+        <select
+          className="review-form__select"
+          value={status}
+          onChange={e => setStatus(e.target.value)}
+        >
           <option>Satisfied</option>
           <option>Very satisfied</option>
           <option>Extremely satisfied</option>
         </select>
-      </label>
+      </div>
 
-      <label>
-        <span>Review</span>
+      <div className="review-form__row">
+        <label className="review-form__label">Review</label>
         <textarea
+          className="review-form__textarea"
           value={text}
           onChange={e => setText(e.target.value)}
           placeholder="Write a few words…"
         />
-        <small>characters: {text.length}</small>
-      </label>
+        <small className="review-form__hint">characters: {text.length}</small>
+      </div>
 
-      {error && <div>{error}</div>}
+      {error && <div className="review-form__error">{error}</div>}
 
-      <button type="submit">Submit</button>
+      <div className="review-form__actions">
+        <button className="btn" type="submit">Submit</button>
+      </div>
     </form>
   );
 }
