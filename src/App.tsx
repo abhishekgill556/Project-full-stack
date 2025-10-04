@@ -5,7 +5,7 @@ import Services from './Components/Services/Services'
 import Book from './Components/book/book'
 import Stylist from './Components/stylist/stylist'
 import { Blog } from './Components/blog/Blog'
-import Reviews from './Components/Reviews/Reviews'
+import Reviews from './Components/Reviews/ReviewsPage';
 import Footer from './Components/Footer/footer'
 import ServicesPage from './Components/Pages/ServicePage'
 import { MyBlogs } from './Components/Pages/Blogpage'
@@ -24,12 +24,11 @@ function App() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/blog" element={<Blog posts={posts} setPosts={setPosts} />} />
           <Route path="/blog/my-posts" element={<MyBlogs posts={posts} setPosts={setPosts} />} />
+          <Route path="/reviews" element={<Reviews />} />
         </Routes>
         <Services />
         <Book />
         <Stylist />
-        <Blog posts={posts} setPosts={setPosts} /> 
-        <Reviews />
         <Footer />
       </BrowserRouter>
     </>
