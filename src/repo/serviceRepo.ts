@@ -1,21 +1,40 @@
-import type { Service } from "../types/service";
-import data from "../data/services.json";
 
-let db: Service[] = [...(data as Service[])];
+import type { Service } from "../types/service";
+import servicesData from "../data/services.json";
+
+let db: Service[] = [...(servicesData as Service[])]; // start with JSON data
+
+const wait = (ms = 100) => new Promise(res => setTimeout(res, ms));
 
 export const serviceRepo = {
-  async listAll(): Promise<Service[]> {
+  async getAll(): Promise<Service[]> {
+    await wait();
     return [...db];
   },
 
-  async search(text?: string): Promise<Service[]> {
-    const q = text?.trim().toLowerCase();
-    if (!q) return this.listAll();
-    return db.filter(
-      (s) =>
-        s.name.toLowerCase().includes(q) ||
-        s.category.toLowerCase().includes(q) ||
-        s.description?.toLowerCase().includes(q)
-    );
+  async getById(id: string): Promise<Service | null> {
+    await wait();
+    return db.find(s => s.id === id) ?? null;
   },
+
+  async create(item: Service): Promise<Service> {
+    await wait();
+    db.push(item);
+    return item;
+  },
+
+  async update(id: string, patch: Partial<Service>): Promise<Service | null> {
+    await wait();
+    const index = db.findIndex(s => s.id === id);
+    if (index === -1) return null;
+    db[index] = { ...db[index], ...patch };
+    return db[index];
+  },
+
+  async remove(id: string): Promise<boolean> {
+    await wait();
+    const before = db.length;
+    db = db.filter(s => s.id !== id);
+    return db.length < before;
+  }
 };
