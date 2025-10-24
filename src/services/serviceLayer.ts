@@ -50,11 +50,13 @@ export const serviceService = {
       duration: Number(input.duration),
       category: input.category,
       description: input.description?.trim() || undefined
+      
     };
 
     const created = await serviceRepo.create(item);
     return { ok: true, value: created };
   },
+  
 
   async remove(id: string): Promise<boolean> {
     return serviceRepo.remove(id);

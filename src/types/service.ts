@@ -8,8 +8,8 @@ export type ServiceCategory =
 export interface Service {
   id: string;
   name: string;
-  price: number;    
-  duration: number;  
-  category: ServiceCategory;
+  price: number;
+  duration: number;
+  category: ServiceCategory; 
   description?: string;
 }

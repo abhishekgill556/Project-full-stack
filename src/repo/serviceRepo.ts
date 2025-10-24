@@ -1,15 +1,13 @@
-
 import type { Service } from "../types/service";
 import servicesData from "../data/services.json";
 
-let db: Service[] = [...(servicesData as Service[])]; // start with JSON data
-
+let db: Service[] = [...(servicesData as Service[])];
 const wait = (ms = 100) => new Promise(res => setTimeout(res, ms));
 
 export const serviceRepo = {
   async getAll(): Promise<Service[]> {
     await wait();
-    return [...db];
+    return [...db]; 
   },
 
   async getById(id: string): Promise<Service | null> {
@@ -36,5 +34,5 @@ export const serviceRepo = {
     const before = db.length;
     db = db.filter(s => s.id !== id);
     return db.length < before;
-  }
+  },
 };
