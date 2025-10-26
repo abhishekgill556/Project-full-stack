@@ -5,7 +5,7 @@ import Book from './Components/book/book'
 import { Blog } from './Components/blog/Blog'
 import Reviews from './Components/Reviews/ReviewsPage';
 import Footer from './Components/Footer/footer'
-import ServicesPage from './Components/Pages/ServicePage'
+import ServicesPage from './Components/Pages/ServicesPage'
 import { MyBlogs } from './Components/Pages/Blogpage'
 import StylistsPage from "./Components/Pages/StylistsPage";
 import { useState } from 'react'

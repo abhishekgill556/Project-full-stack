@@ -1,16 +1,10 @@
-export type Service = {
-  id: string;
-  name: string;
-  price: number;
-  duration: number;
-  description?: string;
-};
+import type { Service } from "../../types/service";
 
 type Props = {
   service: Service;
-  onRemove?: (id: string) => void;     
-  onSave?: (id: string) => void;         
-  isSaved?: boolean;                    
+  onRemove?: (id: string) => void;
+  onSave?: (id: string) => void;
+  isSaved?: boolean;
 };
 
 export default function ServiceCard({ service, onRemove, onSave, isSaved }: Props) {
@@ -18,7 +12,9 @@ export default function ServiceCard({ service, onRemove, onSave, isSaved }: Prop
     <article className="service-card">
       <h3>{service.name}</h3>
       {service.description && <p className="service-desc">{service.description}</p>}
-      <div className="service-meta">Price — ${service.price}, {service.duration} min</div>
+      <div className="service-meta">
+        {service.category} — ${service.price}, {service.duration} min
+      </div>
 
       <div className="service-actions">
         {onSave && (
