@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import type { BlogPost } from "../../types/blogpost";
 
 interface BlogFormProps {
@@ -37,9 +37,7 @@ export function BlogForm({ add }: BlogFormProps) {
         onChange={(e) => setDescription(e.target.value)}
         placeholder="Enter blog description"
       />
-      <button type="submit">
-        Add Blog Post
-      </button>
+      <button type="submit">Add Blog Post</button>
     </form>
   );
 }

@@ -1,6 +1,6 @@
 import "./Blog.css";
-import type { BlogPost } from "../../types/blogpost";
 import { BlogForm } from "../Pages/BlogForm";
+import type { BlogPost } from "../../types/blogpost";
 
 interface BlogProps {
   posts: BlogPost[];
@@ -8,32 +8,29 @@ interface BlogProps {
 }
 
 export function Blog({ posts, setPosts }: BlogProps) {
-  const add = (newPost: BlogPost) => {
-    setPosts([...posts, newPost]);
+
+  const addPost = (newPost: BlogPost) => {
+    setPosts(prev => [...prev, newPost]);
   };
 
-  const remove = (id: number) => {
-    setPosts(posts.filter((x) => x.id !== id));
+  const removePost = (id: number | string) => {
+    setPosts(prev => prev.filter(post => post.id !== id));
   };
 
   return (
     <section className="blog">
       <h2>Our Blog</h2>
 
-      <BlogForm add={add} />
+      <BlogForm add={addPost} />
 
-      {posts.map((x) => (
-        <article key={x.id} className="blog-post">
-          <h3>{x.title}</h3>
-          <p>{x.description}</p>
-          <a href={x.link}>
-            Read More
-          </a>
-          <button
-            onClick={() => remove(x.id)}
-          >
-            Remove
-          </button>
+      {posts.length === 0 && <p>No blog posts yet.</p>}
+
+      {posts.map((post) => (
+        <article key={post.id} className="blog-post">
+          <h3>{post.title}</h3>
+          <p>{post.description}</p>
+          {post.link && <a href={post.link}>Read More</a>}
+          <button onClick={() => removePost(post.id)}>Remove</button>
         </article>
       ))}
     </section>
