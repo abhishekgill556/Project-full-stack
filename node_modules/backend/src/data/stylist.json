@@ -1,0 +1,17 @@
+{
+  "haircut": {
+    "Junior Stylist": 30,
+    "Professional Stylist": 45,
+    "Master Barber": 60
+  },
+  "extensions": {
+    "Extension Technician": 200,
+    "Senior Extension Specialist": 300,
+    "Master Extension Artist": 420
+  },
+  "wedding": {
+    "Bridal Stylist": 150,
+    "Senior Bridal Lead": 185,
+    "Creative Director": 220
+  }
+}
