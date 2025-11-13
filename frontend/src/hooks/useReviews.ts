@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import type { Review } from "../types/Reviews";
-import { reviewService } from "../../../frontend/src/services/reviewService"
+import { reviewService } from "../services/reviewService"
  
 export function useReviews() {
   const [reviews, setReviews] = useState<Review[]>([]);

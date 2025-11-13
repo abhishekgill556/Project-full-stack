@@ -1,4 +1,4 @@
-import type { Review } from "../types/Reviews";
+import type { Review } from "../../../frontend/src/types/Reviews";
 
 import { reviewRepository } from "../repo/reviewsRepository";
  

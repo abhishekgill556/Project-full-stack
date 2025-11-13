@@ -13,6 +13,8 @@ model Service {
   description String?
   price       Float
   image       String?
+  category    String
+  duration    Int
   bookings    Booking[]
 }
 
@@ -36,6 +38,5 @@ model Booking {
   customerName String
   serviceId    Int
   date         DateTime
-
-  service Service @relation(fields: [serviceId], references: [id])
+  service      Service  @relation(fields: [serviceId], references: [id])
 }
