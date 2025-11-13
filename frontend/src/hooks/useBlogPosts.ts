@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import type { BlogPost } from "../types/blogpost";
-import * as blogService from "../../../frontend/src/services/blogService";
+import * as blogService from "../services/blogService";
 
 export function useBlogPosts() {
   const [posts, setPosts] = useState<BlogPost[]>([]);

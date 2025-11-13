@@ -1,4 +1,4 @@
-import type { StylistData } from "../types/stylist";
+import type { StylistData } from "../../../frontend/src/types/stylist";
 
 export function filterStylists(data: StylistData, term: string): StylistData {
   const t = term.trim().toLowerCase();

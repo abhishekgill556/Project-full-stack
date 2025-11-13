@@ -1,46 +1,41 @@
 import { useEffect, useState } from "react";
-import type { Service, ServiceCategory } from "../types/service";
-import { serviceService } from "../../../frontend/src/services/serviceLayer";
+import type { Service } from "../types/service";
+import { serviceService } from "../services/serviceLayer";
 
 export function useServices() {
   const [services, setServices] = useState<Service[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [search, setSearch] = useState("");
-
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [duration, setDuration] = useState("");
-  const [category, setCategory] = useState<ServiceCategory>("Other");
+  const [category, setCategory] = useState("Cuts");
   const [description, setDescription] = useState("");
-
 
   async function loadServices() {
     try {
       setLoading(true);
       setError(null);
-      const list = await serviceService.list(search);
+
+      console.log("Fetching services from backend...");
+      const list = await serviceService.list();
+      console.log("Loaded services:", list);
+
       setServices(list);
-    } catch {
+
+    } catch (err) {
+      console.error("LOAD SERVICES ERROR →", err);
       setError("Could not load services.");
     } finally {
       setLoading(false);
     }
   }
 
-
   useEffect(() => {
     loadServices();
   }, []);
 
-
-  useEffect(() => {
-    const t = setTimeout(() => loadServices(), 200);
-    return () => clearTimeout(t);
-  }, [search]);
-
-  
   async function addService() {
     const result = await serviceService.create({
       name,
@@ -55,39 +50,32 @@ export function useServices() {
       return;
     }
 
-
     setServices((prev) => [...prev, result.value]);
 
     setName("");
     setPrice("");
     setDuration("");
-    setCategory("Other");
+    setCategory("Cuts");
     setDescription("");
     loadServices();
   }
 
-
-  async function removeService(id: string) {
-    await serviceService.remove(id);
+  async function removeService(id: number | string) {
+    await serviceService.remove(Number(id));
     loadServices();
   }
 
   return {
     services,
-    search,
-    setSearch,
     loading,
     error,
-    name,
-    setName,
-    price,
-    setPrice,
-    duration,
-    setDuration,
-    category,
-    setCategory,
-    description,
-    setDescription,
+
+    name, setName,
+    price, setPrice,
+    duration, setDuration,
+    category, setCategory,
+    description, setDescription,
+
     addService,
     removeService,
   };

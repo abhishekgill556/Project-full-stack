@@ -1,5 +1,5 @@
 import * as blogRepo from "../apis/blogRepository";
-import type { BlogPost } from "../types/blogpost";
+import type { BlogPost } from "../../../frontend/src/types/blogpost";
 
 export async function fetchPosts() {
   const posts = await blogRepo.getAllPosts();

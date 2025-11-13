@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { stylistRepository } from "../apis/stylistRepo";
-import { filterStylists } from "../../../frontend/src/services/stylistService";
+import { filterStylists } from "../services/stylistService";
 import type { StylistData } from "../types/stylist";
 
 export function useStylists() {
