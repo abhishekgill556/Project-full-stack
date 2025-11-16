@@ -19,7 +19,9 @@ export function useStylists() {
 
   const addSavedTerm = (term: string) => {
     const t = term.trim();
-    if (t && !savedTerms.includes(t)) setSavedTerms([...savedTerms, t]);
+    if (t && !savedTerms.includes(t)) {
+      setSavedTerms([...savedTerms, t]);
+    }
   };
 
   const removeSavedTerm = (term: string) => {

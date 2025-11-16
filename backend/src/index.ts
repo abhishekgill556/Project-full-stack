@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
+
 import serviceRoutes from "./routes/serviceRoutes";
+import stylistRoutes from "./routes/stylistRoutes";
 
 const app = express();
 
@@ -15,6 +17,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/services", serviceRoutes);
+app.use("/api/stylists", stylistRoutes);
 
 const PORT = 5000;
 app.listen(PORT, () => console.log(`Backend running on port ${PORT}`));
