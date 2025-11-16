@@ -1,8 +1,8 @@
 import { Router } from "express";
-import reviewsRoutes from "./reviews.routes.js";
+import reviewRoutes from "./reviews.routes";
 
 const router = Router();
 
-router.use("/reviews", reviewsRoutes);
+router.use("/reviews", reviewRoutes);
 
 export default router;
