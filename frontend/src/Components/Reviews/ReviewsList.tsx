@@ -1,24 +1,34 @@
+import { useEffect, useState } from "react";
+import { reviewRepository } from "../../apis/reviewsrepository";
 import type { Review } from "../../types/Reviews";
- 
-type Props = {
-  reviews: Review[];
-  onDelete: (id: string) => void;
-};
- 
-export function ReviewsList({ reviews, onDelete }: Props) {
+
+export default function ReviewsList() {
+  const [reviews, setReviews] = useState<Review[]>([]);
+
+  async function loadReviews() {
+    const data = await reviewRepository.getAll();
+    setReviews(data);
+  }
+
+  async function handleDelete(id: number) {
+    await reviewRepository.remove(id);
+    loadReviews(); 
+  }
+
+  useEffect(() => {
+    loadReviews();
+  }, []);
+
   return (
-<ul className="reviews-list">
-      {reviews.map((rev) => (
-<li key={rev.id} className="review-card">
-<div className="review-header">
-<span className="review-name">{rev.name}</span>
-<span className="review-status">{rev.status}</span>
-</div>
-<p className="review-text">{rev.text}</p>
- 
-          <button onClick={() => onDelete(rev.id)}>Delete</button>
-</li>
+    <div>
+      <h2>Reviews</h2>
+      {reviews.map((r) => (
+        <div key={r.id} className="review-card">
+          <p><strong>{r.name}</strong> ⭐ {r.rating}</p>
+          <p>{r.comment}</p>
+          <button onClick={() => handleDelete(r.id)}>Delete</button>
+        </div>
       ))}
-</ul>
+    </div>
   );
 }
