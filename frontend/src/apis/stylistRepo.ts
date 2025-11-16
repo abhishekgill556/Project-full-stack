@@ -1,16 +1,24 @@
 import type { StylistData } from "../types/stylist";
-import { STYLISTS_TESTDATA } from "../data/stylists.testdata";
 
-let store: StylistData = { ...STYLISTS_TESTDATA };
+const API_URL = "http://localhost:5000/api/stylists";
 
 export const stylistRepository = {
   async getAll(): Promise<StylistData> {
-    return { ...store };
+    const res = await fetch(API_URL);
+    return res.json();
   },
-  async update(service: string, levels: Record<string, number>): Promise<void> {
-    store[service] = levels;
+
+  async update(category: string, levels: Record<string, number>): Promise<void> {
+    await fetch(API_URL, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ category, levels }),
+    });
   },
-  async remove(service: string): Promise<void> {
-    delete store[service];
+
+  async remove(category: string): Promise<void> {
+    await fetch(`${API_URL}/${category}`, {
+      method: "DELETE",
+    });
   }
 };

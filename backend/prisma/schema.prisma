@@ -18,6 +18,14 @@ model Service {
   bookings    Booking[]
 }
 
+model Stylist {
+  id       Int     @id @default(autoincrement())
+  category String
+  service  String
+  level    String
+  price    Float
+}
+
 model Review {
   id        Int      @id @default(autoincrement())
   name      String
