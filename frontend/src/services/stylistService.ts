@@ -1,4 +1,4 @@
-import type { StylistData } from "../../../frontend/src/types/stylist";
+import type { StylistData } from "../types/stylist";
 
 export function filterStylists(data: StylistData, term: string): StylistData {
   const t = term.trim().toLowerCase();
@@ -6,16 +6,16 @@ export function filterStylists(data: StylistData, term: string): StylistData {
 
   const filtered: StylistData = {};
 
-  for (const [service, levels] of Object.entries(data)) {
-    const serviceMatch = service.toLowerCase().includes(t);
-    const matchedLevels: Record<string, number> = {};
+  for (const [category, levels] of Object.entries(data)) {
+    const matchCategory = category.toLowerCase().includes(t);
 
+    const matchedLevels: Record<string, number> = {};
     for (const [level, price] of Object.entries(levels)) {
       if (level.toLowerCase().includes(t)) matchedLevels[level] = price;
     }
 
-    if (serviceMatch || Object.keys(matchedLevels).length > 0) {
-      filtered[service] = serviceMatch ? levels : matchedLevels;
+    if (matchCategory || Object.keys(matchedLevels).length > 0) {
+      filtered[category] = matchCategory ? levels : matchedLevels;
     }
   }
 
