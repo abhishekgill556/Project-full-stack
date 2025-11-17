@@ -73,7 +73,7 @@ export default function ServicesPage() {
       {error && <p className="error">{error}</p>}
       {!loading && services.length === 0 && <p>No services found.</p>}
 
-      {/* --- Service List --- */}
+  
       <ul className="services-list">
         {services.map((s: Service) => (
           <li key={s.id} className="service-card">
