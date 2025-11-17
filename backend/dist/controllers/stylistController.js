@@ -10,13 +10,13 @@ exports.default = {
         res.json(data);
     },
     async update(req, res) {
-        const { service, levels } = req.body;
-        await stylistService_1.default.update(service, levels);
+        const { category, levels } = req.body;
+        await stylistService_1.default.update(category, levels);
         res.json({ message: "Updated" });
     },
     async remove(req, res) {
-        const { service } = req.params;
-        await stylistService_1.default.remove(service);
+        const { category } = req.params;
+        await stylistService_1.default.remove(category);
         res.json({ message: "Deleted" });
     }
 };
