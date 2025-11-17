@@ -8,12 +8,7 @@ import Footer from './Components/Footer/footer'
 import ServicesPage from './Components/Pages/ServicesPage'
 import { MyBlogs } from './Components/Pages/Blogpage'
 import StylistsPage from './Components/Pages/StylistsPage'
-import { useState } from 'react'
-import type { BlogPost } from './types/blogpost'
-import { blogPosts as initialPosts } from './data/blogData'
-
 function App() {
-  const [posts, setPosts] = useState<BlogPost[]>(initialPosts)
 
   return (
     <>
@@ -22,8 +17,8 @@ function App() {
         <Routes>
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/stylists" element={<StylistsPage />} />
-          <Route path="/blog" element={<Blog posts={posts} setPosts={setPosts} />} />
-          <Route path="/blog/my-posts" element={<MyBlogs posts={posts} setPosts={setPosts} />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/my-posts" element={<MyBlogs />} />
           <Route path="/reviews" element={<Reviews />} />
         </Routes>
         <Book />

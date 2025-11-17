@@ -1,28 +1,36 @@
 import React, { useState } from "react";
-import type { BlogPost } from "../../types/blogpost";
+import type { BlogPostInput } from "../../types/blogpost";
 
 interface BlogFormProps {
-  add: (newPost: BlogPost) => void;
+  add: (newPost: BlogPostInput) => Promise<void> | void;
+  submitting?: boolean;
 }
 
-export function BlogForm({ add }: BlogFormProps) {
+export function BlogForm({ add, submitting }: BlogFormProps) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [error, setError] = useState<string | null>(null);
 
-  const handleAdd = (e: React.FormEvent) => {
+  const handleAdd = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!title.trim() || !description.trim()) return;
+    setError(null);
+    if (!title.trim() || !description.trim()) {
+      setError("Title and description are required");
+      return;
+    }
 
-    const newPost: BlogPost = {
-      id: Date.now(),
+    const newPost: BlogPostInput = {
       title,
       description,
-      link: "#",
     };
 
-    add(newPost);
-    setTitle("");
-    setDescription("");
+    try {
+      await add(newPost);
+      setTitle("");
+      setDescription("");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unable to add post");
+    }
   };
 
   return (
@@ -37,7 +45,10 @@ export function BlogForm({ add }: BlogFormProps) {
         onChange={(e) => setDescription(e.target.value)}
         placeholder="Enter blog description"
       />
-      <button type="submit">Add Blog Post</button>
+      {error && <p className="error">{error}</p>}
+      <button type="submit" disabled={submitting}>
+        {submitting ? "Saving..." : "Add Blog Post"}
+      </button>
     </form>
   );
 }

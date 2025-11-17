@@ -27,19 +27,41 @@ model Stylist {
 }
 
 model Review {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(cuid())
   name      String
-  rating    Int
-  comment   String
+  status    String
+  text      String
   createdAt DateTime @default(now())
 }
 
 model Blog {
-  id        Int      @id @default(autoincrement())
-  title     String
-  content   String
-  createdAt DateTime @default(now())
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  link        String
+  createdAt   DateTime @default(now())
 }
+
+
+model ResourceCategory {
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  summary   String?
+  resources Resource[]
+}
+
+model Resource {
+  id          Int               @id @default(autoincrement())
+  title       String
+  description String?
+  url         String
+  mediaType   String
+  categoryId  Int
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  category    ResourceCategory  @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+}
+
 
 model Booking {
   id           Int      @id @default(autoincrement())

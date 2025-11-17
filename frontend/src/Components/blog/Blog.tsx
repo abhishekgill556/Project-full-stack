@@ -1,35 +1,29 @@
 import "./Blog.css";
 import { BlogForm } from "../Pages/BlogForm";
-import type { BlogPost } from "../../types/blogpost";
+import { useBlogPosts } from "../../hooks/useBlogPosts";
 
-interface BlogProps {
-  posts: BlogPost[];
-  setPosts: React.Dispatch<React.SetStateAction<BlogPost[]>>;
-}
-
-export function Blog({ posts, setPosts }: BlogProps) {
-
-  const addPost = (newPost: BlogPost) => {
-    setPosts(prev => [...prev, newPost]);
-  };
-
-  const removePost = (id: number | string) => {
-    setPosts(prev => prev.filter(post => post.id !== id));
-  };
+export function Blog() {
+  const { posts, loading, error, addPost, removePost } = useBlogPosts();
 
   return (
     <section className="blog">
       <h2>Our Blog</h2>
 
-      <BlogForm add={addPost} />
+      <BlogForm add={addPost} submitting={loading} />
 
-      {posts.length === 0 && <p>No blog posts yet.</p>}
+      {loading && <p>Loading blog posts...</p>}
+      {error && <p className="error">{error}</p>}
+      {!loading && posts.length === 0 && <p>No blog posts yet.</p>}
 
       {posts.map((post) => (
         <article key={post.id} className="blog-post">
           <h3>{post.title}</h3>
           <p>{post.description}</p>
-          {post.link && <a href={post.link}>Read More</a>}
+          {post.link && (
+            <a href={post.link} target="_blank" rel="noreferrer">
+              Read More
+            </a>
+          )}
           <button onClick={() => removePost(post.id)}>Remove</button>
         </article>
       ))}

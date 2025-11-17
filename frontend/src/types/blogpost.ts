@@ -3,4 +3,11 @@ export interface BlogPost {
   title: string;
   description: string;
   link: string;
+  createdAt?: string;
 }
+
+export type BlogPostInput = {
+  title: string;
+  description: string;
+  link?: string;
+};

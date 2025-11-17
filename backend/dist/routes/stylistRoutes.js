@@ -8,5 +8,5 @@ const stylistController_1 = __importDefault(require("../controllers/stylistContr
 const router = (0, express_1.Router)();
 router.get("/", stylistController_1.default.getAll);
 router.put("/", stylistController_1.default.update);
-router.delete("/:service", stylistController_1.default.remove);
+router.delete("/:category", stylistController_1.default.remove);
 exports.default = router;
