@@ -5,6 +5,7 @@ import Header from './Components/Header/Header';
 
 import Book from './Components/book/book';
 import Reviews from './Components/Reviews/ReviewsPage';
+
 import Footer from './Components/Footer/footer';
 import ServicesPage from './Components/Pages/ServicesPage';
 import StylistsPage from './Components/Pages/StylistsPage';
