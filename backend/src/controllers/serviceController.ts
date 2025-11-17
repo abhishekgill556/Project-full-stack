@@ -14,17 +14,33 @@ export const serviceController = {
   },
 
   async create(req: Request, res: Response) {
-    const created = await prismaService.create(req.body);
-    res.status(201).json(created);
+    try {
+      // req.body already validated & normalized by validateService
+      const created = await prismaService.create(req.body);
+      res.status(201).json(created);
+    } catch (err) {
+      console.error("Create service error:", err);
+      res.status(500).json({ error: "Failed to create service" });
+    }
   },
 
   async update(req: Request, res: Response) {
-    const updated = await prismaService.update(Number(req.params.id), req.body);
-    res.json(updated);
+    try {
+      const updated = await prismaService.update(Number(req.params.id), req.body);
+      res.json(updated);
+    } catch (err) {
+      console.error("Update service error:", err);
+      res.status(500).json({ error: "Failed to update service" });
+    }
   },
 
   async remove(req: Request, res: Response) {
-    await prismaService.remove(Number(req.params.id));
-    res.status(204).send();
-  }
+    try {
+      await prismaService.remove(Number(req.params.id));
+      res.status(204).send();
+    } catch (err) {
+      console.error("Delete service error:", err);
+      res.status(500).json({ error: "Failed to delete service" });
+    }
+  },
 };
