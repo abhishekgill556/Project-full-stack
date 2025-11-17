@@ -4,6 +4,7 @@ import cors from "cors";
 import serviceRoutes from "./routes/serviceRoutes";
 import stylistRoutes from "./routes/stylistRoutes";
 import blogRoutes from "./routes/blogRoutes";
+import reviewRoutes from "./routes/reviews.routes";
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.get("/", (req, res) => {
 app.use("/api/services", serviceRoutes);
 app.use("/api/stylists", stylistRoutes);
 app.use("/api/blogs", blogRoutes);
+app.use("/api/reviews", reviewRoutes);
 
 const PORT = 5000;
 app.listen(PORT, () => console.log(`Backend running on port ${PORT}`));
