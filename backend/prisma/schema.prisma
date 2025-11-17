@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
 model Service {
@@ -27,12 +27,13 @@ model Stylist {
 }
 
 model Review {
-  id        String   @id @default(cuid())
+  id        Int      @id @default(autoincrement())
   name      String
-  status    String
-  text      String
+  rating    Int
+  comment   String
   createdAt DateTime @default(now())
 }
+
 
 model Blog {
   id          Int      @id @default(autoincrement())
@@ -41,7 +42,6 @@ model Blog {
   link        String
   createdAt   DateTime @default(now())
 }
-
 
 model ResourceCategory {
   id        Int        @id @default(autoincrement())
@@ -61,7 +61,6 @@ model Resource {
   updatedAt   DateTime          @updatedAt
   category    ResourceCategory  @relation(fields: [categoryId], references: [id], onDelete: Cascade)
 }
-
 
 model Booking {
   id           Int      @id @default(autoincrement())

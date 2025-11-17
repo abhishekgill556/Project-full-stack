@@ -1,6 +1,7 @@
-export type Review = {
-  id: string;
+export interface Review {
+  id: number;
   name: string;
-  text: string;
-  status: string;
-};
+  rating: number;
+  comment: string;
+  createdAt?: string;
+}
