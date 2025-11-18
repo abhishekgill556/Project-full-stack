@@ -14,6 +14,7 @@ function App() {
     <>
       <BrowserRouter>
         <Header />
+
         <Routes>
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/stylists" element={<StylistsPage />} />
@@ -21,11 +22,12 @@ function App() {
           <Route path="/blog/my-posts" element={<MyBlogs />} />
           <Route path="/reviews" element={<Reviews />} />
         </Routes>
+
         <Book />
         <Footer />
       </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
