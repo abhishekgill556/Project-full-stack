@@ -1,17 +1,10 @@
-import type { BlogPost } from "../../types/blogpost";
 import { Link } from "react-router-dom";
+import { useBlogPosts } from "../../hooks/useBlogPosts";
 
-interface MyBlogsProps {
-  posts: BlogPost[];
-  setPosts: React.Dispatch<React.SetStateAction<BlogPost[]>>;
-}
+export function MyBlogs() {
+  const { posts, loading, error, removePost } = useBlogPosts();
 
-export function MyBlogs({ posts, setPosts }: MyBlogsProps) {
-  const handleRemove = (id: number) => {
-    setPosts(posts.filter((p) => p.id !== id));
-  };
-
-  if (posts.length === 0) {
+  if (!loading && posts.length === 0) {
     return (
       <div className="p-8 text-lg">
         <p>No blog posts available.</p>
@@ -25,12 +18,14 @@ export function MyBlogs({ posts, setPosts }: MyBlogsProps) {
   return (
     <div className="p-8">
       <h2 className="text-2xl mb-4">My Blog Posts</h2>
+      {loading && <p>Loading...</p>}
+      {error && <p className="error">{error}</p>}
       {posts.map((x) => (
         <div key={x.id} className="blog-post mb-4">
           <h3>{x.title}</h3>
           <p>{x.description}</p>
           <button
-            onClick={() => handleRemove(x.id)}
+            onClick={() => removePost(x.id)}
             className="text-red-500 underline"
           >
             Remove

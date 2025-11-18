@@ -1,32 +1,39 @@
-import { useEffect, useState } from "react";
-
-export type Stylist = {
-  id: number;
-  name: string;
-  expertise: string;
-};
+import { useEffect, useMemo, useState } from "react";
+import { stylistRepository } from "../apis/stylistRepo";
+import { filterStylists } from "../services/stylistService";
+import type { StylistData } from "../types/stylist";
 
 export function useStylists() {
-  const [stylists, setStylists] = useState<Stylist[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-
-  async function loadStylists() {
-    try {
-      setLoading(true);
-      const res = await fetch("http://localhost:3000/api/stylists");
-      const data = await res.json();
-      setStylists(data);
-    } catch (err) {
-      setError("Failed to load stylists");
-    } finally {
-      setLoading(false);
-    }
-  }
+  const [allData, setAllData] = useState<StylistData>({});
+  const [filterTerm, setFilterTerm] = useState("");
+  const [savedTerms, setSavedTerms] = useState<string[]>([]);
 
   useEffect(() => {
-    loadStylists();
+    stylistRepository.getAll().then(setAllData);
   }, []);
 
-  return { stylists, loading, error };
+  const filteredData = useMemo(
+    () => filterStylists(allData, filterTerm),
+    [allData, filterTerm]
+  );
+
+  const addSavedTerm = (term: string) => {
+    const t = term.trim();
+    if (t && !savedTerms.includes(t)) {
+      setSavedTerms([...savedTerms, t]);
+    }
+  };
+
+  const removeSavedTerm = (term: string) => {
+    setSavedTerms(savedTerms.filter((x) => x !== term));
+  };
+
+  return {
+    data: filteredData,
+    filterTerm,
+    setFilterTerm,
+    savedTerms,
+    addSavedTerm,
+    removeSavedTerm
+  };
 }

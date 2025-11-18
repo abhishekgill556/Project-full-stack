@@ -1,0 +1,98 @@
+[
+  {
+    "id": "cut-basic",
+    "name": "Classic Haircut",
+    "price": 35,
+    "duration": 30,
+    "category": "Cuts",
+    "description": "A clean, stylish cut tailored to your look."
+  },
+  {
+    "id": "cut-deluxe",
+    "name": "Deluxe Cut & Style",
+    "price": 55,
+    "duration": 45,
+    "category": "Cuts",
+    "description": "Includes wash, cut, and professional blow-dry styling."
+  },
+  {
+    "id": "color-root",
+    "name": "Root Touch-up",
+    "price": 65,
+    "duration": 45,
+    "category": "Color",
+    "description": "Refreshes regrowth for seamless color maintenance."
+  },
+  {
+    "id": "color-full",
+    "name": "Full Color",
+    "price": 95,
+    "duration": 90,
+    "category": "Color",
+    "description": "One full-color application with professional finish."
+  },
+  {
+    "id": "highlight-partial",
+    "name": "Partial Highlights",
+    "price": 85,
+    "duration": 75,
+    "category": "Color",
+    "description": "Highlights placed around the crown and framing areas."
+  },
+  {
+    "id": "highlight-full",
+    "name": "Full Highlights",
+    "price": 120,
+    "duration": 120,
+    "category": "Color",
+    "description": "Multi-dimensional highlights applied throughout the hair."
+  },
+  {
+    "id": "extension-basic",
+    "name": "Tape-in Extensions",
+    "price": 250,
+    "duration": 120,
+    "category": "Hair Extensions",
+    "description": "Semi-permanent tape-in extensions for added length and volume."
+  },
+  {
+    "id": "extension-keratin",
+    "name": "Keratin Bond Extensions",
+    "price": 400,
+    "duration": 180,
+    "category": "Hair Extensions",
+    "description": "Long-lasting keratin bond extensions for a natural finish."
+  },
+  {
+    "id": "extension-maintenance",
+    "name": "Extension Maintenance",
+    "price": 120,
+    "duration": 90,
+    "category": "Hair Extensions",
+    "description": "Repositioning and upkeep for your existing extensions."
+  },
+  {
+    "id": "treatment-keratin",
+    "name": "Keratin Smoothing Treatment",
+    "price": 200,
+    "duration": 150,
+    "category": "Other",
+    "description": "Smooths frizz and adds shine with long-lasting effects."
+  },
+  {
+    "id": "treatment-scalp",
+    "name": "Scalp Treatment",
+    "price": 60,
+    "duration": 40,
+    "category": "Other",
+    "description": "Deep cleansing and revitalizing scalp therapy."
+  },
+  {
+    "id": "style-updo",
+    "name": "Special Occasion Updo",
+    "price": 75,
+    "duration": 60,
+    "category": "Other",
+    "description": "Elegant updo styling for weddings, proms, and events."
+  }
+]

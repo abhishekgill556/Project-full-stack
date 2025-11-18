@@ -1,0 +1,20 @@
+[
+  {
+    "id": "r1",
+    "name": "Neena",
+    "status": "Very satisfied",
+    "text": "Loved the service! The staff were friendly and my haircut turned out perfect."
+  },
+  {
+    "id": "r2",
+    "name": "Parry",
+    "status": "Satisfied",
+    "text": "Great ambience and professional team. Booking was quick and easy."
+  },
+  {
+    "id": "r3",
+    "name": "Tashu",
+    "status": "Extremely satisfied",
+    "text": "Wedding styling was amazing. Highly recommend APJS Elegance Salon!"
+  }
+]
