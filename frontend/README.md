@@ -1,4 +1,4 @@
-////
+
 // components:
 Header and footer: It was done by Sapna and jasleen and all the non-working functions were added 
 
