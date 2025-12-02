@@ -20,7 +20,7 @@ model Service {
 }
 
 model Stylist {
-  id       Int     @id @default(autoincrement())
+  id       Int    @id @default(autoincrement())
   category String
   service  String
   level    String
@@ -51,15 +51,15 @@ model ResourceCategory {
 }
 
 model Resource {
-  id          Int               @id @default(autoincrement())
+  id          Int              @id @default(autoincrement())
   title       String
   description String?
   url         String
   mediaType   String
   categoryId  Int
-  createdAt   DateTime          @default(now())
-  updatedAt   DateTime          @updatedAt
-  category    ResourceCategory  @relation(fields: [categoryId], references: [id])
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  category    ResourceCategory @relation(fields: [categoryId], references: [id])
 }
 
 model Booking {
