@@ -3,7 +3,6 @@ import { Request, Response } from "express";
 
 const prisma = new PrismaClient();
 
-
 export const syncUser = async (req: Request, res: Response) => {
   try {
     const clerkId = req.auth.userId; 
