@@ -1,6 +1,6 @@
 import type { Review } from "../types/Reviews";
 
-const API_URL = "http://localhost:3001/api/reviews";
+const API_URL = "http://localhost:5000/api/reviews";
 
 export const reviewRepository = {
   async getAll(): Promise<Review[]> {

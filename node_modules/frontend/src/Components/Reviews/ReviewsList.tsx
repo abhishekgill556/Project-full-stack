@@ -1,12 +1,11 @@
 import type { Review } from "../../types/Reviews";
 
-export default function ReviewsList({
-  reviews,
-  onDelete,
-}: {
+interface ReviewsListProps {
   reviews: Review[];
   onDelete: (id: number) => void;
-}) {
+}
+
+export default function ReviewsList({ reviews, onDelete }: ReviewsListProps) {
   return (
     <div>
       <h2>Reviews</h2>

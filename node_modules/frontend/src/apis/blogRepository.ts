@@ -1,47 +1,35 @@
-import type { BlogPost } from "../types/blogpost";
-import { blogPosts } from "../data/blogData";
+import type { BlogPost, BlogPostInput } from "../types/blogpost";
 
-let posts: BlogPost[] = [...blogPosts]; 
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export async function getAllPosts(): Promise<BlogPost[]> {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve([...posts]), 100);
-  });
+  const res = await fetch(`${BASE_URL}/blogs`);
+  return (await res.json()).data;
 }
 
-export async function getPostById(postId: number): Promise<BlogPost> {
-  return new Promise((resolve, reject) => {
-    const found = posts.find((p) => p.id === postId);
-    if (!found) reject(new Error(`Post with id ${postId} not found`));
-    else resolve(found);
-  });
+export async function getPostById(id: number): Promise<BlogPost> {
+  const res = await fetch(`${BASE_URL}/blogs/${id}`);
+  return (await res.json()).data;
 }
 
-export async function createPost(post: BlogPost): Promise<BlogPost> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      posts.push(post);
-      resolve(post);
-    }, 100);
+export async function createPost(post: BlogPostInput): Promise<BlogPost> {
+  const res = await fetch(`${BASE_URL}/blogs`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(post),
   });
+  return (await res.json()).data;
 }
 
-export async function updatePost(updated: BlogPost): Promise<BlogPost> {
-  return new Promise((resolve, reject) => {
-    const index = posts.findIndex((p) => p.id === updated.id);
-    if (index === -1) reject(new Error(`Post with id ${updated.id} not found`));
-    else {
-      posts[index] = updated;
-      resolve(updated);
-    }
+export async function updatePost(post: BlogPost): Promise<BlogPost> {
+  const res = await fetch(`${BASE_URL}/blogs/${post.id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(post),
   });
+  return (await res.json()).data;
 }
 
-export async function deletePost(postId: number): Promise<void> {
-  return new Promise((resolve, reject) => {
-    const exists = posts.some((p) => p.id === postId);
-    if (!exists) reject(new Error(`Post with id ${postId} not found`));
-    posts = posts.filter((p) => p.id !== postId);
-    resolve();
-  });
+export async function deletePost(id: number) {
+  await fetch(`${BASE_URL}/blogs/${id}`, { method: "DELETE" });
 }
