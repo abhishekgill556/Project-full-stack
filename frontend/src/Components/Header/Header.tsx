@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
 import "./Header.css";
 
 export default function Header() {
@@ -11,9 +12,9 @@ export default function Header() {
       <header className="site-header">
         <div className="header-row">
           <div className="logo">
-            <img 
-              src="public/logo.png"   
-              alt="APJS Elegance Salon Logo" 
+            <img
+              src="public/logo.png"
+              alt="APJS Elegance Salon Logo"
               className="logo-img"
             />
           </div>
@@ -38,12 +39,34 @@ export default function Header() {
             <NavLink to="/reviews" className="nav-link">
               Reviews
             </NavLink>
+
+            {/* Optional: only show “My Posts” to logged-in users */}
+            <SignedIn>
+              <NavLink to="/blog/my-posts" className="nav-link">
+                My Posts
+              </NavLink>
+            </SignedIn>
           </nav>
 
           <div className="right">
             <div className="search">
               <input type="text" placeholder="Search" />
             </div>
+
+            {/* When logged OUT → show Login / Register */}
+            <SignedOut>
+              <NavLink to="/login" className="nav-link">
+                Login
+              </NavLink>
+              <NavLink to="/register" className="nav-link">
+                Register
+              </NavLink>
+            </SignedOut>
+
+            {/* When logged IN → show Clerk user button (includes logout) */}
+            <SignedIn>
+              <UserButton afterSignOutUrl="/" />
+            </SignedIn>
           </div>
         </div>
       </header>
