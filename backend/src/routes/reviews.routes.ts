@@ -1,10 +1,9 @@
 import { Router } from "express";
-import { PrismaClient } from "@prisma/client";
+import prisma from "../services/prismaService";
 
-const prisma = new PrismaClient();
 const router = Router();
 
-router.get("/", async (req, res) => {
+router.get("/", async (_req, res) => {
   const reviews = await prisma.review.findMany();
   res.json(reviews);
 });
