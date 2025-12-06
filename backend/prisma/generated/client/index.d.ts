@@ -4469,6 +4469,7 @@ export namespace Prisma {
     description: string | null
     link: string | null
     createdAt: Date | null
+    authorClerkId: string | null
   }
 
   export type BlogMaxAggregateOutputType = {
@@ -4477,6 +4478,7 @@ export namespace Prisma {
     description: string | null
     link: string | null
     createdAt: Date | null
+    authorClerkId: string | null
   }
 
   export type BlogCountAggregateOutputType = {
@@ -4485,6 +4487,7 @@ export namespace Prisma {
     description: number
     link: number
     createdAt: number
+    authorClerkId: number
     _all: number
   }
 
@@ -4503,6 +4506,7 @@ export namespace Prisma {
     description?: true
     link?: true
     createdAt?: true
+    authorClerkId?: true
   }
 
   export type BlogMaxAggregateInputType = {
@@ -4511,6 +4515,7 @@ export namespace Prisma {
     description?: true
     link?: true
     createdAt?: true
+    authorClerkId?: true
   }
 
   export type BlogCountAggregateInputType = {
@@ -4519,6 +4524,7 @@ export namespace Prisma {
     description?: true
     link?: true
     createdAt?: true
+    authorClerkId?: true
     _all?: true
   }
 
@@ -4614,6 +4620,7 @@ export namespace Prisma {
     description: string
     link: string
     createdAt: Date
+    authorClerkId: string | null
     _count: BlogCountAggregateOutputType | null
     _avg: BlogAvgAggregateOutputType | null
     _sum: BlogSumAggregateOutputType | null
@@ -4641,6 +4648,7 @@ export namespace Prisma {
     description?: boolean
     link?: boolean
     createdAt?: boolean
+    authorClerkId?: boolean
   }, ExtArgs["result"]["blog"]>
 
   export type BlogSelectScalar = {
@@ -4649,6 +4657,7 @@ export namespace Prisma {
     description?: boolean
     link?: boolean
     createdAt?: boolean
+    authorClerkId?: boolean
   }
 
 
@@ -4662,6 +4671,7 @@ export namespace Prisma {
       description: string
       link: string
       createdAt: Date
+      authorClerkId: string | null
     }, ExtArgs["result"]["blog"]>
     composites: {}
   }
@@ -5087,6 +5097,7 @@ export namespace Prisma {
     readonly description: FieldRef<"Blog", 'String'>
     readonly link: FieldRef<"Blog", 'String'>
     readonly createdAt: FieldRef<"Blog", 'DateTime'>
+    readonly authorClerkId: FieldRef<"Blog", 'String'>
   }
     
 
@@ -9285,7 +9296,8 @@ export namespace Prisma {
     title: 'title',
     description: 'description',
     link: 'link',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    authorClerkId: 'authorClerkId'
   };
 
   export type BlogScalarFieldEnum = (typeof BlogScalarFieldEnum)[keyof typeof BlogScalarFieldEnum]
@@ -9570,6 +9582,7 @@ export namespace Prisma {
     description?: StringFilter<"Blog"> | string
     link?: StringFilter<"Blog"> | string
     createdAt?: DateTimeFilter<"Blog"> | Date | string
+    authorClerkId?: StringNullableFilter<"Blog"> | string | null
   }
 
   export type BlogOrderByWithRelationInput = {
@@ -9578,6 +9591,7 @@ export namespace Prisma {
     description?: SortOrder
     link?: SortOrder
     createdAt?: SortOrder
+    authorClerkId?: SortOrderInput | SortOrder
   }
 
   export type BlogWhereUniqueInput = Prisma.AtLeast<{
@@ -9589,6 +9603,7 @@ export namespace Prisma {
     description?: StringFilter<"Blog"> | string
     link?: StringFilter<"Blog"> | string
     createdAt?: DateTimeFilter<"Blog"> | Date | string
+    authorClerkId?: StringNullableFilter<"Blog"> | string | null
   }, "id">
 
   export type BlogOrderByWithAggregationInput = {
@@ -9597,6 +9612,7 @@ export namespace Prisma {
     description?: SortOrder
     link?: SortOrder
     createdAt?: SortOrder
+    authorClerkId?: SortOrderInput | SortOrder
     _count?: BlogCountOrderByAggregateInput
     _avg?: BlogAvgOrderByAggregateInput
     _max?: BlogMaxOrderByAggregateInput
@@ -9613,6 +9629,7 @@ export namespace Prisma {
     description?: StringWithAggregatesFilter<"Blog"> | string
     link?: StringWithAggregatesFilter<"Blog"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Blog"> | Date | string
+    authorClerkId?: StringNullableWithAggregatesFilter<"Blog"> | string | null
   }
 
   export type ResourceCategoryWhereInput = {
@@ -10015,6 +10032,7 @@ export namespace Prisma {
     description: string
     link: string
     createdAt?: Date | string
+    authorClerkId?: string | null
   }
 
   export type BlogUncheckedCreateInput = {
@@ -10023,6 +10041,7 @@ export namespace Prisma {
     description: string
     link: string
     createdAt?: Date | string
+    authorClerkId?: string | null
   }
 
   export type BlogUpdateInput = {
@@ -10030,6 +10049,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     link?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    authorClerkId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type BlogUncheckedUpdateInput = {
@@ -10038,6 +10058,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     link?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    authorClerkId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type BlogCreateManyInput = {
@@ -10046,6 +10067,7 @@ export namespace Prisma {
     description: string
     link: string
     createdAt?: Date | string
+    authorClerkId?: string | null
   }
 
   export type BlogUpdateManyMutationInput = {
@@ -10053,6 +10075,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     link?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    authorClerkId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type BlogUncheckedUpdateManyInput = {
@@ -10061,6 +10084,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     link?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    authorClerkId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ResourceCategoryCreateInput = {
@@ -10545,6 +10569,7 @@ export namespace Prisma {
     description?: SortOrder
     link?: SortOrder
     createdAt?: SortOrder
+    authorClerkId?: SortOrder
   }
 
   export type BlogAvgOrderByAggregateInput = {
@@ -10557,6 +10582,7 @@ export namespace Prisma {
     description?: SortOrder
     link?: SortOrder
     createdAt?: SortOrder
+    authorClerkId?: SortOrder
   }
 
   export type BlogMinOrderByAggregateInput = {
@@ -10565,6 +10591,7 @@ export namespace Prisma {
     description?: SortOrder
     link?: SortOrder
     createdAt?: SortOrder
+    authorClerkId?: SortOrder
   }
 
   export type BlogSumOrderByAggregateInput = {

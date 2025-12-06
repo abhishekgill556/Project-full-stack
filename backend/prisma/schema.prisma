@@ -41,6 +41,7 @@ model Blog {
   description String
   link        String
   createdAt   DateTime @default(now())
+  authorClerkId String?
 }
 
 model ResourceCategory {

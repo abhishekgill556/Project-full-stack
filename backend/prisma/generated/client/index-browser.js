@@ -147,7 +147,8 @@ exports.Prisma.BlogScalarFieldEnum = {
   title: 'title',
   description: 'description',
   link: 'link',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  authorClerkId: 'authorClerkId'
 };
 
 exports.Prisma.ResourceCategoryScalarFieldEnum = {

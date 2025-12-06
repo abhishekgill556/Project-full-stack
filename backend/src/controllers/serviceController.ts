@@ -15,7 +15,6 @@ export const serviceController = {
 
   async create(req: Request, res: Response) {
     try {
-      // req.body already validated & normalized by validateService
       const created = await prismaService.create(req.body);
       res.status(201).json(created);
     } catch (err) {
