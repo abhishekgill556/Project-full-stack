@@ -1,37 +1,52 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "../../prisma/generated/client";
 
 const prisma = new PrismaClient();
 
 export const prismaService = {
-  getAll() {
+  // CRUD: Services
+  async getAll() {
     return prisma.service.findMany();
   },
 
-  getById(id: number) {
-    return prisma.service.findUnique({ where: { id } });
+  async getById(id: number) {
+    return prisma.service.findUnique({
+      where: { id },
+    });
   },
 
-  create(data: {
-    name: string;
-    price: number;
-    duration: number;
-    category: string;
-    description?: string;
-    image?: string;
-  }) {
-    return prisma.service.create({ data });
+  async create(data: any) {
+    return prisma.service.create({
+      data,
+    });
   },
 
-  update(id: number, data: any) {
+  async update(id: number, data: any) {
     return prisma.service.update({
       where: { id },
-      data
+      data,
     });
   },
 
-  remove(id: number) {
+  async remove(id: number) {
     return prisma.service.delete({
-      where: { id }
+      where: { id },
     });
-  }
+  },
+
+  // I.1 User-associated data
+  async addMyService(userId: string, serviceId: number) {
+    return prisma.myServices.create({
+      data: {
+        userId,
+        serviceId,
+      },
+    });
+  },
+
+  async getMyServices(userId: string) {
+    return prisma.myServices.findMany({
+      where: { userId },
+      include: { service: true },
+    });
+  },
 };

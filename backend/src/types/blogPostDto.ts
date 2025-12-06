@@ -4,4 +4,5 @@ export interface BlogPostDto {
   description: string;
   link: string;
   createdAt?: Date;
+  authorClerkId?: string;
 }

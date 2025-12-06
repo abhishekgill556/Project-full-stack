@@ -1,32 +1,66 @@
 import "./Blog.css";
-import { BlogForm } from "../Pages/BlogForm";
+import { useState, useEffect } from "react";
+import { useUser } from "@clerk/clerk-react";
+
 import { useBlogPosts } from "../../hooks/useBlogPosts";
+import type { BlogPost } from "../../types/blogpost";
 
 export function Blog() {
-  const { posts, loading, error, addPost, removePost } = useBlogPosts();
+  const { isSignedIn } = useUser();
+  const { getAllPosts, addPost, deletePost } = useBlogPosts();
+
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+
+  useEffect(() => {
+    getAllPosts().then(setPosts);
+  }, []);
+
+  async function handleAdd() {
+    const newPost = {
+      title: "New Blog Post",
+      description: "This is a new blog post description",
+    };
+
+    const created = await addPost(newPost);
+    setPosts([...posts, created]);
+  }
+
+  async function handleDelete(id: number) {
+    await deletePost(id);
+    setPosts(posts.filter((p) => p.id !== id));
+  }
 
   return (
     <section className="blog">
       <h2>Our Blog</h2>
 
-      <BlogForm add={addPost} submitting={loading} />
+      {isSignedIn ? (
+        <button onClick={handleAdd}>Add Blog Post</button>
+      ) : (
+        <p>You must sign in to add or remove blog posts.</p>
+      )}
 
-      {loading && <p>Loading blog posts...</p>}
-      {error && <p className="error">{error}</p>}
-      {!loading && posts.length === 0 && <p>No blog posts yet.</p>}
+      <ul>
+        {posts.map((post) => (
+          <li key={post.id}>
+            <article className="blog-post">
+              <p>
+                <strong>{post.title}</strong>
+              </p>
+              <p>{post.description}</p>
+              {post.link && (
+                <a href={post.link} target="_blank" rel="noreferrer">
+                  Read More
+                </a>
+              )}
 
-      {posts.map((post) => (
-        <article key={post.id} className="blog-post">
-          <h3>{post.title}</h3>
-          <p>{post.description}</p>
-          {post.link && (
-            <a href={post.link} target="_blank" rel="noreferrer">
-              Read More
-            </a>
-          )}
-          <button onClick={() => removePost(post.id)}>Remove</button>
-        </article>
-      ))}
+              {isSignedIn && (
+                <button onClick={() => handleDelete(post.id)}>Remove</button>
+              )}
+            </article>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

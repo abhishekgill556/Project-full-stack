@@ -6,6 +6,8 @@ const controller = new BlogController();
 
 router.get("/", (req, res) => controller.getAll(req, res));
 
+router.get("/my", (req, res) => controller.myBlogs(req, res));
+
 router.get("/:id", (req, res) => controller.getById(req.params.id, res));
 
 router.post("/", (req, res) => controller.create(req, res));

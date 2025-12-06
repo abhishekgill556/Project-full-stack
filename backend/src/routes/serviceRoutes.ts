@@ -1,13 +1,17 @@
 import { Router } from "express";
 import { serviceController } from "../controllers/serviceController";
-import { validateService } from "../middlewares/validateService";
+import { requireAuth } from "@clerk/express";
 
-const router = Router();
 
+
+const router = Router()
 router.get("/", serviceController.getAll);
 router.get("/:id", serviceController.getById);
-router.post("/", validateService, serviceController.create);
-router.put("/:id", validateService, serviceController.update);
+router.post("/", serviceController.create);
+router.put("/:id", serviceController.update);
 router.delete("/:id", serviceController.remove);
+router.post("/my-services", requireAuth(), serviceController.addMyService);
+router.get("/my-services", requireAuth(), serviceController.getMyServices);
+
 
 export default router;
