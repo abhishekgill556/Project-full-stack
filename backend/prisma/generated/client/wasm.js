@@ -181,6 +181,13 @@ exports.Prisma.UserScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.MyServicesScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  serviceId: 'serviceId',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -200,7 +207,8 @@ exports.Prisma.ModelName = {
   ResourceCategory: 'ResourceCategory',
   Resource: 'Resource',
   Booking: 'Booking',
-  User: 'User'
+  User: 'User',
+  MyServices: 'MyServices'
 };
 
 /**

@@ -1,8 +1,7 @@
-import prisma from "../prisma";
-import { Blog } from "@prisma/client";
+import prisma from "./prismaService";
 import type { BlogPostDto } from "../types/blogPostDto";
 
-function mapBlogToDto(blog: Blog): BlogPostDto {
+function mapBlogToDto(blog: any): BlogPostDto {
   return {
     id: blog.id,
     title: blog.title,
