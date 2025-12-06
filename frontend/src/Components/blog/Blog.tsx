@@ -10,24 +10,38 @@ export function Blog() {
   const { getAllPosts, addPost, deletePost } = useBlogPosts();
 
   const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     getAllPosts().then(setPosts);
   }, []);
 
   async function handleAdd() {
-    const newPost = {
-      title: "New Blog Post",
-      description: "This is a new blog post description",
-    };
+    try {
+      setError(null);
+      const newPost = {
+        title: "New Blog Post",
+        description: "This is a new blog post description",
+        link: "https://example.com",
+      };
 
-    const created = await addPost(newPost);
-    setPosts([...posts, created]);
+      const created = await addPost(newPost);
+      setPosts([...posts, created]);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to add post");
+      console.error("Add post error:", err);
+    }
   }
 
   async function handleDelete(id: number) {
-    await deletePost(id);
-    setPosts(posts.filter((p) => p.id !== id));
+    try {
+      setError(null);
+      await deletePost(id);
+      setPosts(posts.filter((p) => p.id !== id));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to delete post");
+      console.error("Delete post error:", err);
+    }
   }
 
   return (
@@ -39,6 +53,8 @@ export function Blog() {
       ) : (
         <p>You must sign in to add or remove blog posts.</p>
       )}
+
+      {error && <p style={{ color: "red" }}>{error}</p>}
 
       <ul>
         {posts.map((post) => (

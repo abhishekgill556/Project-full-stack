@@ -50,3 +50,5 @@ export const prismaService = {
     });
   },
 };
+
+export default prisma;

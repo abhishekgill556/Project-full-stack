@@ -35,6 +35,11 @@ export function useBlogPosts() {
       body: JSON.stringify(data),
     });
 
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(`Failed to add post: ${res.status} - ${text}`);
+    }
+
     const json = await res.json();
     return json.data;
   }
