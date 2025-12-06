@@ -1,10 +1,47 @@
 import { Router } from "express";
-import stylistController from "../controllers/stylistController";
-
+import { requireAuth } from "@clerk/express";
+import { PrismaClient } from "@prisma/client";
+ 
+const prisma = new PrismaClient();
 const router = Router();
-
-router.get("/", stylistController.getAll);
-router.put("/", stylistController.update);
-router.delete("/:category", stylistController.remove);
-
+ 
+// -------------------------
+//  PUBLIC: view stylists
+// -------------------------
+router.get("/", async (req, res) => {
+  const stylists = await prisma.stylist.findMany();
+  res.json(stylists);
+});
+ 
+// -------------------------
+//  PROTECTED: create stylist
+// -------------------------
+router.post("/", requireAuth(), async (req, res) => {
+  const { name, specialty, experience } = req.body;
+ 
+  const stylist = await prisma.stylist.create({
+    data: {
+      name,
+      specialty,
+      experience,
+      createdBy: req.auth.userId, // Store logged in user
+    },
+  });
+ 
+  res.json(stylist);
+});
+ 
+// -------------------------
+//  PROTECTED: delete stylist
+// -------------------------
+router.delete("/:id", requireAuth(), async (req, res) => {
+  const id = req.params.id;
+ 
+  await prisma.stylist.delete({
+    where: { id },
+  });
+ 
+  res.json({ message: "Stylist removed" });
+});
+ 
 export default router;

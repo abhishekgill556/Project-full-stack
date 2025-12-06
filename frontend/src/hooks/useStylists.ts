@@ -1,39 +1,63 @@
-import { useEffect, useMemo, useState } from "react";
-import { stylistRepository } from "../apis/stylistRepo";
-import { filterStylists } from "../services/stylistService";
-import type { StylistData } from "../types/stylist";
-
+import { useAuth } from "@clerk/clerk-react";
+ 
+// -----------------------------
+//  TYPE FOR STYLIST
+// -----------------------------
+export interface Stylist {
+  id: string;
+  name: string;
+  specialty: string;
+  experience: number;
+}
+ 
+// -----------------------------
+//  HOOK FUNCTIONS
+// -----------------------------
 export function useStylists() {
-  const [allData, setAllData] = useState<StylistData>({});
-  const [filterTerm, setFilterTerm] = useState("");
-  const [savedTerms, setSavedTerms] = useState<string[]>([]);
-
-  useEffect(() => {
-    stylistRepository.getAll().then(setAllData);
-  }, []);
-
-  const filteredData = useMemo(
-    () => filterStylists(allData, filterTerm),
-    [allData, filterTerm]
-  );
-
-  const addSavedTerm = (term: string) => {
-    const t = term.trim();
-    if (t && !savedTerms.includes(t)) {
-      setSavedTerms([...savedTerms, t]);
-    }
-  };
-
-  const removeSavedTerm = (term: string) => {
-    setSavedTerms(savedTerms.filter((x) => x !== term));
-  };
-
-  return {
-    data: filteredData,
-    filterTerm,
-    setFilterTerm,
-    savedTerms,
-    addSavedTerm,
-    removeSavedTerm
-  };
+  const { getToken } = useAuth();
+ 
+  // GET — Public (no token needed)
+  async function getStylists(): Promise<Stylist[]> {
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/stylists`);
+    return res.json();
+  }
+ 
+  // POST — Protected
+  async function addStylist(data: {
+    name: string;
+    specialty: string;
+    experience: number;
+  }): Promise<Stylist> {
+    const token = await getToken();
+ 
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/stylists`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(data),
+    });
+ 
+    return res.json();
+  }
+ 
+  // DELETE — Protected
+  async function deleteStylist(id: string): Promise<{ message: string }> {
+    const token = await getToken();
+ 
+    const res = await fetch(
+      `${import.meta.env.VITE_API_BASE_URL}/stylists/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+ 
+    return res.json();
+  }
+ 
+  return { getStylists, addStylist, deleteStylist };
 }
