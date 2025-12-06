@@ -17,6 +17,7 @@ import Footer from "./Components/Footer/footer";
 import ServicesPage from "./Components/Pages/ServicesPage";
 import { MyBlogs } from "./Components/Pages/Blogpage";
 import StylistsPage from "./Components/Pages/StylistsPage";
+import { MyBlogsPage } from "./Components/Pages/MyBlogsPage";
 
 function App() {
   return (
@@ -34,14 +35,27 @@ function App() {
           {/* ---------------- AUTH ROUTES ---------------- */}
           <Route
             path="/login"
-            element={<SignIn routing="path" path="/login" />}
+            element={
+              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '70vh' }}>
+                <SignIn routing="path" path="/login" />
+              </div>
+            }
           />
           <Route
             path="/register"
-            element={<SignUp routing="path" path="/register" />}
+            element={
+              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '70vh' }}>
+                <SignUp 
+                  routing="path" 
+                  path="/register"
+                  afterSignUpUrl="/"
+                  signInUrl="/login"
+                />
+              </div>
+            }
           />
 
-          {/* ---------------- PROTECTED ROUTE ---------------- */}
+          {/* ---------------- PROTECTED ROUTES ---------------- */}
           <Route
             path="/blog/my-posts"
             element={
@@ -56,6 +70,8 @@ function App() {
               </>
             }
           />
+
+          <Route path="/my-posts" element={<MyBlogsPage />} />
         </Routes>
 
         {/* Footer + Booking always visible */}

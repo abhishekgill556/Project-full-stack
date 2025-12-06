@@ -21,6 +21,7 @@ export default function Header() {
         </SignedOut>
 
         <SignedIn>
+          <NavLink to="/my-posts">My Posts</NavLink>
           <UserButton afterSignOutUrl="/" />
         </SignedIn>
 

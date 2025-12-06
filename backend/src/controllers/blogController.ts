@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { Request, Response } from "express";
 import { Controller, Get, Post, Put, Delete, Req, Res, Param, UseBefore } from "routing-controllers";
-
+import { requireAuth } from "@clerk/express";
 import * as BlogService from "../services/blogService";
 import { validateRequest } from "../middlewares/validate"
 import { blogPostSchema } from "../validations/blogPostValidation";
@@ -25,7 +25,8 @@ export class BlogController {
   @Post("/blogs")
   @UseBefore(validateRequest(blogPostSchema))
   async create(@Req() req: Request, @Res() res: Response) {
-    const blog = await BlogService.createBlogPost(req.body);
+    const clerkId = (req as any).auth?.userId as string | undefined;
+    const blog = await BlogService.createBlogPost(req.body, clerkId);
     return res.status(201).json(successResponse(blog, "Blog created"));
   }
 
@@ -40,5 +41,15 @@ export class BlogController {
   async delete(@Param("id") id: string, @Res() res: Response) {
     await BlogService.deleteBlogPost(Number(id));
     return res.status(200).json(successResponse(null, "Deleted"));
+  }
+
+  @Get("/blogs/my")
+  async myBlogs(@Req() req: Request, @Res() res: Response) {
+    const clerkId = (req as any).auth?.userId as string | undefined;
+    if (!clerkId) {
+      return res.status(401).json(errorResponse("Unauthorized"));
+    }
+    const blogs = await BlogService.fetchMyBlogPosts(clerkId);
+    return res.status(200).json(successResponse(blogs));
   }
 }

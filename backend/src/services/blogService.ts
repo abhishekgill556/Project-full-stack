@@ -2,13 +2,15 @@ import prisma from "./prismaService";
 import type { BlogPostDto } from "../types/blogPostDto";
 
 function mapBlogToDto(blog: any): BlogPostDto {
-  return {
+  const dto: BlogPostDto = {
     id: blog.id,
     title: blog.title,
     description: blog.description,
     link: blog.link,
     createdAt: blog.createdAt,
   };
+  (dto as any).authorClerkId = blog.authorClerkId ?? undefined;
+  return dto;
 }
 
 export const fetchAllBlogPosts = async (): Promise<BlogPostDto[]> => {
@@ -26,11 +28,11 @@ export const getBlogPostById = async (id: number): Promise<BlogPostDto | null> =
   return blog ? mapBlogToDto(blog) : null;
 };
 
-export const createBlogPost = async (post: BlogPostDto): Promise<BlogPostDto> => {
+export const createBlogPost = async (post: BlogPostDto, authorClerkId?: string): Promise<BlogPostDto> => {
   const { id, createdAt, ...data } = post;
 
   const created = await prisma.blog.create({
-    data,
+    data: { ...data, authorClerkId },
   });
 
   return mapBlogToDto(created);
@@ -51,4 +53,12 @@ export const deleteBlogPost = async (id: number): Promise<void> => {
   await prisma.blog.delete({
     where: { id },
   });
+};
+
+export const fetchMyBlogPosts = async (clerkId: string): Promise<BlogPostDto[]> => {
+  const data = await prisma.blog.findMany({
+    where: { authorClerkId: clerkId },
+    orderBy: { createdAt: "desc" },
+  });
+  return data.map(mapBlogToDto);
 };
