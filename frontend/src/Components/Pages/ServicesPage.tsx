@@ -2,7 +2,11 @@ import type { Service } from "../../types/service";
 import { useServices } from "../../hooks/useServices";
 import "../Services/Service.css";
 
+import { useUser } from "@clerk/clerk-react";   
+
 export default function ServicesPage() {
+  const { isSignedIn } = useUser();            
+
   const {
     services,
     loading,
@@ -22,50 +26,59 @@ export default function ServicesPage() {
     <section className="services-section">
       <h2>Our Services</h2>
 
-      {/* --- Add Service Form --- */}
-      <div className="form-controls">
+      {/* ------------------------
+          ADD SERVICE FORM (ADMIN)
+        ------------------------ */}
+      {isSignedIn && (
+        <div className="form-controls">
+          <input
+            placeholder="Service name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
 
-        <input
-          placeholder="Service name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+          <input
+            placeholder="Price (e.g. 55)"
+            type="number"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          />
 
-        <input
-          placeholder="Price (e.g. 55)"
-          type="number"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-        />
+          <input
+            placeholder="Duration (minutes)"
+            type="number"
+            value={duration}
+            onChange={(e) => setDuration(e.target.value)}
+          />
 
-        <input
-          placeholder="Duration (minutes)"
-          type="number"
-          value={duration}
-          onChange={(e) => setDuration(e.target.value)}
-        />
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option value="Cuts">Cuts</option>
+            <option value="Color">Color</option>
+            <option value="Hair Extensions">Hair Extensions</option>
+            <option value="Other">Other</option>
+          </select>
 
-        <select
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        >
-          <option value="Cuts">Cuts</option>
-          <option value="Color">Color</option>
-          <option value="Hair Extensions">Hair Extensions</option>
-          <option value="Other">Other</option>
-        </select>
+          <textarea
+            placeholder="Short description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
 
-        <textarea
-          placeholder="Short description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
+          <button className="add-btn" onClick={addService}>
+            Add Service
+          </button>
+        </div>
+      )}
 
-        <button className="add-btn" onClick={addService}>
-          Add Service
-        </button>
-
-      </div>
+      {/* If logged out → show message */}
+      {!isSignedIn && (
+        <p className="auth-hint">
+          Sign in to add or edit salon services.
+        </p>
+      )}
 
       <p className="count">Loaded: {services.length}</p>
 
@@ -73,7 +86,6 @@ export default function ServicesPage() {
       {error && <p className="error">{error}</p>}
       {!loading && services.length === 0 && <p>No services found.</p>}
 
-  
       <ul className="services-list">
         {services.map((s: Service) => (
           <li key={s.id} className="service-card">
@@ -87,12 +99,17 @@ export default function ServicesPage() {
             <span>Price: ${s.price}</span><br />
             <span>Duration: {s.duration} min</span>
 
-            <button
-              className="remove-btn"
-              onClick={() => removeService(s.id)}
-            >
-              Remove
-            </button>
+            {/* ------------------------
+                REMOVE BUTTON (ADMIN)
+              ------------------------ */}
+            {isSignedIn && (
+              <button
+                className="remove-btn"
+                onClick={() => removeService(s.id)}
+              >
+                Remove
+              </button>
+            )}
           </li>
         ))}
       </ul>

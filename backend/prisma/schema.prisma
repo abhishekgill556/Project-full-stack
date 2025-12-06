@@ -9,7 +9,7 @@ datasource db {
 }
 
 model Service {
-  id          Int       @id @default(autoincrement())
+  id          Int          @id @default(autoincrement())
   name        String
   description String?
   price       Float
@@ -17,10 +17,11 @@ model Service {
   category    String
   duration    Int
   bookings    Booking[]
+  myServices  MyServices[]
 }
 
 model Stylist {
-  id       Int     @id @default(autoincrement())
+  id       Int    @id @default(autoincrement())
   category String
   service  String
   level    String
@@ -52,15 +53,15 @@ model ResourceCategory {
 }
 
 model Resource {
-  id          Int               @id @default(autoincrement())
+  id          Int              @id @default(autoincrement())
   title       String
   description String?
   url         String
   mediaType   String
   categoryId  Int
-  createdAt   DateTime          @default(now())
-  updatedAt   DateTime          @updatedAt
-  category    ResourceCategory  @relation(fields: [categoryId], references: [id])
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  category    ResourceCategory @relation(fields: [categoryId], references: [id])
 }
 
 model Booking {
@@ -72,8 +73,21 @@ model Booking {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  clerkId   String   @unique
-  email     String?
-  createdAt DateTime @default(now())
+  id         String       @id @default(cuid())
+  clerkId    String       @unique
+  email      String?
+  createdAt  DateTime     @default(now())
+  MyServices MyServices[]
 }
+
+model MyServices {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  serviceId Int
+  createdAt DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [clerkId])
+  service Service @relation(fields: [serviceId], references: [id])
+}
+
+

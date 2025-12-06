@@ -1,65 +1,85 @@
-import "../stylist/stylist.css";
-import StylistFilterForm from "../stylist/StylistFilterForm";
-import SavedFilters from "../stylist/SavedFilters";
+import { useState, useEffect } from "react";
+
+import { useUser } from "@clerk/clerk-react";
+
+
 import { useStylists } from "../../hooks/useStylists";
-import type { StylistData } from "../../types/stylist";
 
-export default function StylistsPage() {
-  const {
-    data,  
-    filterTerm,
-    setFilterTerm,
-    savedTerms,
-    addSavedTerm,
-    removeSavedTerm
-  } = useStylists();
+import type { Stylist } from "../../hooks/useStylists";
+ 
+export default function StylistPage() {
 
-  const items = Object.entries(data as StylistData).flatMap(([serviceName, levels]) =>
-    Object.entries(levels).map(([level, price]) => ({
-      service: serviceName,
-      level,
-      price,
-    }))
-  );
+  const { isSignedIn } = useUser();
 
-  const filteredItems = items.filter(
-    (it) =>
-      it.service.toLowerCase().includes(filterTerm.toLowerCase()) ||
-      it.level.toLowerCase().includes(filterTerm.toLowerCase())
-  );
+  const { getStylists, addStylist, deleteStylist } = useStylists();
+ 
+  const [stylists, setStylists] = useState<Stylist[]>([]);
+ 
+  useEffect(() => {
 
+    getStylists().then(setStylists);
+
+  }, []);
+ 
+  async function handleAdd() {
+
+    const newStylist = {
+
+      name: "New Stylist",
+
+      specialty: "Hair Styling",
+
+      experience: 3,
+
+    };
+ 
+    const created = await addStylist(newStylist);
+
+    setStylists([...stylists, created]);
+
+  }
+ 
+  async function handleDelete(id: string) {
+
+    await deleteStylist(id);
+
+    setStylists(stylists.filter((s) => s.id !== id));
+
+  }
+ 
   return (
-    <div className="stylist">
-      <h2 className="stylist-title">Our Stylists</h2>
+<div>
+<h1>Our Stylists</h1>
+ 
+      {isSignedIn ? (
+<button onClick={handleAdd}>Add Stylist</button>
 
-      <StylistFilterForm
-        filterTerm={filterTerm}
-        setFilterTerm={setFilterTerm}
-        onSave={() => {
-          addSavedTerm(filterTerm);
-          setFilterTerm(filterTerm);
-        }}
-        onClear={() => setFilterTerm("")}
-      />
+      ) : (
+<p>You must sign in to add or remove stylists.</p>
 
-      <div className="stylist-grid">
-        {filteredItems.map((it) => (
-          <div key={`${it.service}:${it.level}`} className="stylist-card">
-            <h3>{it.service}</h3>
-            <p>
-              <span className="level">{it.level}</span> —{" "}
-              <span className="price">${it.price}</span>
-            </p>
-          </div>
+      )}
+ 
+      <ul>
+
+        {stylists.map((s) => (
+<li key={s.id}>
+<p>
+<strong>{s.name}</strong>
+</p>
+<p>Specialty: {s.specialty}</p>
+<p>Experience: {s.experience} years</p>
+ 
+            {isSignedIn && (
+<button onClick={() => handleDelete(s.id)}>Remove</button>
+
+            )}
+</li>
+
         ))}
-        {filteredItems.length === 0 && <p>No matches found.</p>}
-      </div>
+</ul>
+</div>
 
-      <SavedFilters
-        savedTerms={savedTerms}
-        onSelect={setFilterTerm}
-        onRemove={removeSavedTerm}
-      />
-    </div>
   );
+
 }
+

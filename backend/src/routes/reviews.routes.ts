@@ -3,7 +3,7 @@ import prisma from "../services/prismaService";
 
 const router = Router();
 
-router.get("/", async (req, res) => {
+router.get("/", async (_req, res) => {
   const reviews = await prisma.review.findMany();
   res.json(reviews);
 });
